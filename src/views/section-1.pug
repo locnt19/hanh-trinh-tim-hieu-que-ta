@@ -1,0 +1,47 @@
+extends layout
+
+block scripts
+  script(src='/javascripts/section-1.js')
+
+block content
+  section.bg__2
+    .container.py-3.min-vh-100
+      .middle__center__md.question__wrapper.mx-auto
+        //- h3.text-white.font-weight-bold.ready__title Round 1: Trace back the history
+        form(name="exams_section1" method='POST').card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-5.pb-md-4
+          input.d-none(name='lanThi' value=infoUser.lanThi.luotThi)
+          input.d-none(name='user' value=infoUser._id)
+          if exams
+            input.d-none(name='exam' value=exams.code)
+            input.d-none#submit_time_summary(name='time' value='0')
+            -for(var i = 0; i < exams.questions.length; i++)
+              -var item = exams.questions[i]
+              .tabs(id=`${item.code}` style='display: none')
+                input.d-none(name=`answers[${i}][code]` value=`${item.code}`)
+                h4.question__question.font-weight-bold Question #{i + 1}: #{item.question}
+                .question__answer
+                  .custom-control.custom-radio.mt-2
+                    input.custom-control-input(id=`${item.code}-a` type='radio' name=`answers[${i}][answer]` value='a')
+                    label.custom-control-label.h5(for=`${item.code}-a`) A. #{item.a}
+                  .custom-control.custom-radio.mt-2
+                    input.custom-control-input(id=`${item.code}-b` type='radio' name=`answers[${i}][answer]` value='b')
+                    label.custom-control-label.h5(for=`${item.code}-b`) B. #{item.b}
+                  .custom-control.custom-radio.mt-2
+                    input.custom-control-input(id=`${item.code}-c` type='radio' name=`answers[${i}][answer]` value='c')
+                    label.custom-control-label.h5(for=`${item.code}-c`) C. #{item.c}
+                  .custom-control.custom-radio.mt-2
+                    input.custom-control-input(id=`${item.code}-d` type='radio' name=`answers[${i}][answer]` value='d')
+                    label.custom-control-label.h5(for=`${item.code}-d`) D. #{item.d}
+            .text-center
+              button(type='button').btn.btn-primary.question__submit.px-5.mt-4#time_action_next Next
+              button(type='submit').d-none.btn.btn-primary.question__submit.px-5.mt-4#time_action_submit Go to next round
+            .mt-3
+              .d-flex.align-items-center.justify-content-between
+                .question__time__sum
+                  span(style='font-size: inherit').material-icons.mr-1 alarm
+                  span#time_summary 0
+                .h5.m-0.question__time
+                  span#time_countdown 20
+                div
+                  span#current_question 1
+                  span &nbsp; / #{exams.questions.length}

@@ -1,0 +1,78 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/admin/quan-tri'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Quản trị
+  .row.m-0
+    if quanTriVien && quanTriVien.role === 'root'
+      .col-md-6.p-0.px-md-3
+        .card.p-4
+          h5.font-weight-bold Quản trị mới
+          form(method='POST').row
+            .col-sm-4
+              label.mb-0.w-100 Full name
+                input.form-control(required name='name' placeholder='Full name' value= values ? values.name : null)
+            .col-sm-4
+              label.mb-0.w-100 Tài khoản
+                input.form-control(required name='username' placeholder='Username' value= values ? values.username : null)
+            .col-sm-4
+              label.mb-0.w-100 Mật khẩu
+                input.form-control(required name='password' placeholder='Mật khẩu' value= values ? values.password : null)
+            .col-12.mt-3.text-center
+              button.btn.btn-primary.thoigianthi_submit(type='submit') Tạo
+              button.btn.btn-link.thoigianthi_cancel(type='reset') Hủy
+      .col-md-6.p-0.px-md-3
+        .card
+          h5.mx-4.mt-4.font-weight-bold Danh sách quản trị
+          table.table.table-bordered
+            thead.bg-light
+              tr
+                th.text-center.align-middle.border-0(scope='col')
+                  | #
+                th.align-middle.border-0(scope='col')
+                  | Họ tên
+                th.align-middle.border-0(scope='col')
+                  | Tài khoản
+                th.align-middle.border-0(scope='col')
+                  | Role
+                //- th.text-center.align-middle.border-0(scope='col')
+                  span.material-icons settings
+            tbody
+              if danhSachQuanTri && danhSachQuanTri.length > 0
+                -for(var i = 0; i < danhSachQuanTri.length; i++)
+                  tr
+                    td.text-center #{i + 1}
+                    td= danhSachQuanTri[i].name
+                    td= danhSachQuanTri[i].username
+                    td= danhSachQuanTri[i].role
+                    //- td.text-center
+                      a(href='#') Log out trên tất cả thiết bị
+    else
+      .col-md-7.p-0.px-md-3
+        .card
+          h5.mx-4.mt-4.font-weight-bold Danh sách quản trị
+          table.table.table-bordered
+            thead.bg-light
+              tr
+                th.text-center.align-middle.border-0(scope='col')
+                  | #
+                th.align-middle.border-0(scope='col')
+                  | Họ tên
+                th.align-middle.border-0(scope='col')
+                  | Tài khoản
+                th.align-middle.border-0(scope='col')
+                  | Role
+                //- th.text-center.align-middle.border-0(scope='col')
+                  span.material-icons settings
+            tbody
+              if danhSachQuanTri && danhSachQuanTri.length > 0
+                -for(var i = 0; i < danhSachQuanTri.length; i++)
+                  tr
+                    td.text-center #{i + 1}
+                    td= danhSachQuanTri[i].name
+                    td= danhSachQuanTri[i].username
+                    td= danhSachQuanTri[i].role
+                    //- td.text-center
+                      a(href='#') Log out trên tất cả thiết bị

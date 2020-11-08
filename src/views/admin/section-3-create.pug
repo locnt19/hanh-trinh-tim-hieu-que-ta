@@ -1,0 +1,72 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/questions/section-3'
+  -var title = 'Phần 3 - Tạo câu hỏi'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 3 ➡ Tạo câu hỏi
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        .d-flex
+          small.ml-auto.mb-2
+            if deThi !== null
+              a(href='/questions/section-3') Đã có #{deThi.questions.length} câu hỏi
+            else
+              | Đề thi chưa có câu hỏi
+        form(method='POST' action='/questions/section-3/create').row
+          input.d-none(name='name' value='Phần 3')
+          input.d-none(name='code' value='P03')
+          if deThi !== null
+            -var deThiCuoi = deThi.questions.length - 1
+            input.d-none(id='cauHoiCuoiCuaDeThi' name='questions[0][code]' value=`${deThi.questions[deThiCuoi].code}`)
+          else
+            input.d-none(name='questions[0][code]' value='Q01')
+          .form-group.col-12
+            textarea(name='questions[0][question]' placeholder="Câu hỏi").form-control
+          .form-group.col-12
+            label Địa phương:
+            select(name="questions[0][location]").form-control
+              option(value="datdo") Đất Đỏ
+              option(value="longdien") Long Điền
+              option(value="baria") Bà Rịa
+              option(value="vungtau") Vũng Tàu
+              option(value="condao") Côn Đảo
+              option(value="tanthanh") Tân Thành
+              option(value="chauduc") Châu Đức
+              option(value="xuyenmoc") Xuyên Mộc
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer1(type='radio' name='questions[0][true]' value='a')
+              label.custom-control-label(for="answer1")
+            textarea(name='questions[0][a]' placeholder="Câu trả lời A").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer2(type='radio' name='questions[0][true]' value='b')
+              label.custom-control-label(for="answer2")
+            textarea(name='questions[0][b]' placeholder="Câu trả lời B").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer3(type='radio' name='questions[0][true]' value='c')
+              label.custom-control-label(for="answer3")
+            textarea(name='questions[0][c]' placeholder="Câu trả lời C").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer4(type='radio' name='questions[0][true]' value='d')
+              label.custom-control-label(for="answer4")
+            textarea(name='questions[0][d]' placeholder="Câu trả lời D").form-control
+          .col-12
+            button(type="submit").btn.btn-block.btn-primary Tạo
+  script.
+    if (document.querySelector('#cauHoiCuoiCuaDeThi') !== null) {
+      var cauHoiCuoiCuaDeThi = document.querySelector('#cauHoiCuoiCuaDeThi').value
+      cauHoiCuoiCuaDeThi = cauHoiCuoiCuaDeThi.slice(1)
+      cauHoiCuoiCuaDeThi = parseInt(cauHoiCuoiCuaDeThi) + 1
+      if (parseInt(cauHoiCuoiCuaDeThi) < 10) {
+        cauHoiCuoiCuaDeThi = 'Q0' + cauHoiCuoiCuaDeThi
+      } else {
+        cauHoiCuoiCuaDeThi = 'Q' + cauHoiCuoiCuaDeThi
+      }
+      document.querySelector('#cauHoiCuoiCuaDeThi').value = cauHoiCuoiCuaDeThi
+    }

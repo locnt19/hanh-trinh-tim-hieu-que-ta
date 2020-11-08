@@ -1,0 +1,56 @@
+extends layout
+
+block scripts
+  script(src='/javascripts/section-2.js')
+
+block content
+  form.d-none(name="exams_section2" method='POST')
+    if exams
+      input#section2__summaryTimeeee(type="text" name="time" placeholder="time")
+      input#section2__score(type="text" name="scope" placeholder="scope")
+      input(name='exam' value=examCode)
+      input(name='lanThi' value=infoUser.lanThi.luotThi)
+      input(name='user' value=infoUser._id)
+  .container-fluid.p-4.min-vh-100.bg__3
+    .row
+      .col-12
+        h3.font-weight-bold.ready__title Round 2: History puzzle
+      .col-md-auto
+        .section2__left__container
+          .card.p-3
+            .section2__question__wrapper(style=`background-image: url('${exams[8].image}');`)
+              .section2__question__card.grid-container
+                -for(var i = 0; i < exams.length; i++)
+                  if(i < exams.length - 1)
+                    .section2__question__card__item.default(data-item=`${i+1}` class=`section2__${i+1}` data-value=`${exams[i].true}`) #{i+1}
+          .card.py-3.px-4.mt-3
+            .d-md-flex.align-items-center
+              button(type='button' data-value=`${exams[8].true}`).btn.btn-primary.section2__question__background.px-5 Answer the question
+              .ml-auto.mt-3.mt-md-0
+                span Total time:&nbsp;
+                span.font-weight-bold#section2__summaryTimer 0
+      .col-12.col-xl.mt-4.mt-xl-0
+        .section2__question__list.d-none
+          -for(var i = 0; i < exams.length; i++)
+            -var item = exams[i]
+            .section2__question__item.card.p-4.d-none(data-item=`${i+1}`)
+              h4.question__question.font-weight-bold Question #{i+1}: #{item.question}
+              .question__answer
+                .custom-control.custom-radio.mt-2
+                  input.custom-control-input(id=`section2__answer${i+1}__a` type='radio' name=`section2__answer${i+1}` value='a')
+                  label.custom-control-label.h5(for=`section2__answer${i+1}__a`) A. #{item.a}
+                .custom-control.custom-radio.mt-2
+                  input.custom-control-input(id=`section2__answer${i+1}__b` type='radio' name=`section2__answer${i+1}` value='b')
+                  label.custom-control-label.h5(for=`section2__answer${i+1}__b`) B. #{item.b}
+                .custom-control.custom-radio.mt-2
+                  input.custom-control-input(id=`section2__answer${i+1}__c` type='radio' name=`section2__answer${i+1}` value='c')
+                  label.custom-control-label.h5(for=`section2__answer${i+1}__c`) C. #{item.c}
+                .custom-control.custom-radio.mt-2
+                  input.custom-control-input(id=`section2__answer${i+1}__d` type='radio' name=`section2__answer${i+1}` value='d')
+                  label.custom-control-label.h5(for=`section2__answer${i+1}__d`) D. #{item.d}
+          .card.py-3.px-4.mt-3
+            .d-md-flex.align-items-center
+              button(type='button').btn.btn-primary.section2__question__check__result.px-5 OK
+              .ml-auto.mt-3.mt-md-0
+                span Remaining time:&nbsp;
+                span.font-weight-bold#section2__questionPendingTimer 30

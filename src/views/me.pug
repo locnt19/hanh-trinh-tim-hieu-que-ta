@@ -1,0 +1,86 @@
+extends users.pug
+
+block var
+  -var currentURL = '/me'
+
+block content
+  h4(style='color: #3d5170').text-center.font-weight-bold Personal Information
+  form#users_me(action='/users/me' method='POST').mt-2.row.justify-content-center
+    .col-sm-6.form-group
+      label.d-block.m-0 Full name
+        input.form-control(required name='name' placeholder='Full name' value=user.name)
+    //- .col-sm-6.form-group
+    //-   label.d-block.m-0 Chứng minh nhân dân
+    //-     input.form-control(disabled placeholder='Chứng minh nhân dân' value=user.identity)
+    .col-sm-6.form-group
+      label.d-block.m-0 Email
+        input.form-control(disabled value=user.email)
+      input.d-none(name='email' value=user.email)
+    .col-sm-6.form-group
+      label.d-block.m-0 Date of birth
+        input.form-control(required name='birthday' placeholder='Date of birth' value=user.birthday)
+    .col-sm-6.form-group
+      label.d-block.m-0 Gender
+      .fake__select.dropdown
+        button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          input.w-100.border-0.user-select-none(readonly name='sex' value=user.sex style='outline: none')
+          span.material-icons(style='font-size: inherit') keyboard_arrow_down
+        .dropdown-menu
+          .dropdown-item Nam
+          .dropdown-item Nữ
+    .col-sm-6.form-group
+      label.d-block.m-0 Province/City
+      .fake__select.dropdown
+        button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          input.w-100.border-0.user-select-none(readonly name='province' value=user.province style='outline: none')
+          span.material-icons(style='font-size: inherit') keyboard_arrow_down
+        .dropdown-menu
+          .dropdown-item Bà Rịa - Vũng Tàu
+    .col-sm-6.form-group
+      label.d-block.m-0 Town/District
+      .fake__select.dropdown
+        button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          input.w-100.border-0.user-select-none(readonly name='district' value=user.district style='outline: none')
+          span.material-icons(style='font-size: inherit') keyboard_arrow_down
+        .dropdown-menu
+          .dropdown-item Thành phố Vũng Tàu
+          .dropdown-item Thành phố Bà Rịa
+          .dropdown-item Huyện Châu Đức
+          .dropdown-item Huyện Xuyên Mộc
+          .dropdown-item Huyện Long Điền
+          .dropdown-item Huyện Đất Đỏ
+          .dropdown-item Thị xã Phú Mỹ
+          .dropdown-item Huyện Côn Đảo
+    .col-sm-6.form-group
+      label.d-block.m-0 Educational background
+      .fake__select.dropdown
+        button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          input.w-100.border-0.user-select-none(readonly name='school' value=user.school style='outline: none')
+          span.material-icons(style='font-size: inherit') keyboard_arrow_down
+        .dropdown-menu
+          .dropdown-item Trung học cơ sở
+          .dropdown-item Trung học phổ thông
+          .dropdown-item Cao đẳng
+          .dropdown-item Đại học
+    .col-sm-6.form-group
+      label.d-block.m-0 Name of your school
+        input.form-control(required name='nameSchool' placeholder='Name of your school' value=user.nameSchool)
+    .col-sm-6.form-group
+      label.d-block.m-0 Class/Grade
+      .fake__select.dropdown
+        button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          input.w-100.border-0.user-select-none(readonly name='grade' value=user.grade style='outline: none')
+          span.material-icons(style='font-size: inherit') keyboard_arrow_down
+        .dropdown-menu
+          -for(var i = 6; i < 13; i++)
+            .dropdown-item Lớp #{i}
+          .dropdown-item Cao Đẳng
+          .dropdown-item Đại học
+    .col-sm-6.form-group
+      label.d-block.m-0 Class name
+        input.form-control(required name='classRoom' laceholder='Class name' value=user.classRoom)
+    .col-lg-5.text-center
+      button#users_me_update_yes(type='submit').btn.btn-primary.d-none Confirm and update
+      button#users_me_update_no(type='reset').btn.btn-link.d-none Cancel
+  .text-center.mt-2
+    button.btn.btn-primary#users_me_update Update information

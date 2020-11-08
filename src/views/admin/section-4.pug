@@ -1,0 +1,29 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/questions/section-4'
+  -var title = 'Phần 4 - Danh sách câu hỏi'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 4 ➡ Câu hỏi
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        .text-right.mb-2
+          a.small(href='/questions/section-4/create') Thêm câu hỏi mới
+        table#table_section4_list.table.table-bordered
+          thead.bg-light
+            tr
+              th.text-center.align-middle(scope='col') #
+              th.align-middle(scope='col') Câu hỏi
+              th.align-middle(scope='col') Trả lời
+          tbody
+            if deThi !== null
+              -for(let cauHoi of deThi.questions)
+                tr
+                  td(style='width: 70px').text-center
+                    .mb-2 #{cauHoi.code}
+                    a(class="material-icons" style="font-size: 16px;" href=`/questions/section-4/edit/${cauHoi._id}`) create
+                  td(style='width: 45%') #{cauHoi.question}
+                  td
+                    .mb-2 #{cauHoi.a}

@@ -1,0 +1,78 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/admin'
+
+block content
+  //- h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Thống kê
+  //- .row.m-0
+    .col-lg-6.p-0.px-lg-3
+      .card
+        h6.mx-3.mt-4 Xếp hạng tuần
+        table.table.table-bordered
+          thead.bg-light
+            tr
+              th.text-center.align-middle.border-0(scope='col')
+                | #
+              th.align-middle.border-0(scope='col')
+                | Họ tên
+              th.align-middle.border-0(scope='col')
+                | Điểm
+              th.align-middle.border-0(scope='col')
+                | Thời gian
+          tbody
+            tr
+              td.text-center 1
+              td Nguyễn Thành Lộc
+              td 100
+              td 200s
+            tr
+              td.text-center 2
+              td Nguyễn Lộc Thành
+              td 100
+              td 180s
+            tr
+              td.text-center 3
+              td Lorem ipsum dolor sit.
+              td 100
+              td 160s
+            tr
+              td.text-center 4
+              td Lorem, ipsum.
+              td 100
+              td 100s
+    .col-lg-6.p-0.px-lg-3.mt-4.mt-lg-0
+      .card
+        h6.mx-3.mt-4 Xếp hạng Đợt 1
+        table.table.table-bordered
+          thead.bg-light
+            tr
+              th.text-center.align-middle.border-0(scope='col')
+                | #
+              th.align-middle.border-0(scope='col')
+                | Họ tên
+              th.align-middle.border-0(scope='col')
+                | Điểm
+              th.align-middle.border-0(scope='col')
+                | Thời gian
+          tbody
+            tr
+              td.text-center 1
+              td Nguyễn Thành Lộc
+              td 100
+              td 200s
+            tr
+              td.text-center 2
+              td Nguyễn Lộc Thành
+              td 100
+              td 180s
+            tr
+              td.text-center 3
+              td Lorem ipsum dolor sit.
+              td 100
+              td 160s
+            tr
+              td.text-center 4
+              td Lorem, ipsum.
+              td 100
+              td 100s

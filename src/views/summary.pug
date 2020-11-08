@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  section.bg__1.min-vh-100
+    .container.py-3
+      .middle__center__md.question__wrapper.mx-auto(style="max-width: 400px")
+        .card.bg__card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-5.pb-md-4
+          .mx-auto.question__summary
+            .h4.mb-4.font-weight-bold.text-center Result of #{examName}
+            .d-flex
+              .font-weight-bold Total time: 
+              .ml-auto #{time} seconds
+            .d-flex
+              .font-weight-bold Point: 
+              .ml-auto #{scope} point
+            .text-center.mt-4
+              a#link(href=`${next}`).btn.btn-block.btn-primary Go to&nbsp;
+                span#text_link next round
+                | &nbsp;after&nbsp;
+                span#summary_time 10
+                | &nbsp; seconds
+
+block scripts
+  script(src='/javascripts/summary.js')

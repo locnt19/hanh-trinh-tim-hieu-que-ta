@@ -1,0 +1,48 @@
+extends users.pug
+
+block var
+  -var currentURL = '/ranking'
+
+block content
+  h4(style='color: #3d5170').text-center.font-weight-bold XẾP HẠNG CỦA TÔI
+  -for(var i = 0; i < 4; i++)
+    .mt-3
+      h5.text-center.text-sm-left
+        strong Kết quả thi tuần 1 đợt 1 &nbsp;
+        small (19/7/2020 - 02/8/2020)
+      table.table.table-hover.table-bordered
+        thead.bg-light
+          tr
+            th.align-middle.border-0(scope='col')
+              | #
+            th.align-middle.border-0(scope='col')
+              | Bài thi
+            th.align-middle.border-0(scope='col')
+              | Điểm
+            th.align-middle.border-0(scope='col')
+              | Thời gian
+        tbody
+          tr
+            td 1
+            td P1: Ngược dòng thời gian
+            td 100
+            td 200s
+          tr
+            td 2
+            td P2: Giải mã lịch sử
+            td 100
+            td 180s
+          tr
+            td 3
+            td P3: Khám phá
+            td 100
+            td 160s
+          tr
+            td 4
+            td P4: Kết nối
+            td 100
+            td 100s
+          tr
+            td.font-weight-bold(colspan='2') Tổng:
+            td 400
+            td 640s

@@ -1,0 +1,10 @@
+nav.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm.py-2
+  a(href="/admin" style="color: #3d5170").navbar-brand.font-weight-bold.text-uppercase.mr-0 Hành trình Tìm hiểu quê ta
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      if quanTriVien
+        li(style='font-weight: 500').font-weight-normal.navbar-text #{quanTriVien.name}
+        li.nav-item
+          a.font-weight-normal.nav-link(href='/admin/logout') Đăng xuất

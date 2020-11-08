@@ -1,0 +1,91 @@
+
+nav.admin__sidebar.nav.flex-column.flex-nowrap.h-100.overflow-auto.shadow-sm.bg-white.mt-4.mt-lg-0(style='font-weight: 500')
+  li.nav-item
+    a.nav-link(href='/admin' class={active: currentURL === '/admin'})
+      i.material-icons dashboard
+      span.ml-2 Dashboard
+  li.nav-item
+    a.nav-link(href='/' target='_blank' rel='noopener noreferrer')
+      i.material-icons home
+      span.ml-2 Giao diện thi
+  //- li.nav-item
+    a.nav-link(href='https://drive.google.com/file/d/1QZl00Mp7yfYE_6Xg1IT7DIKxCV4p0Ot9/view' target='_blank' rel='noopener noreferrer')
+      i.material-icons description
+      span.ml-2 Luật lệ
+  li.nav-item
+    a.nav-link(href='/admin/users' class={active: currentURL === '/admin/users'})
+      i.material-icons supervisor_account
+      span.ml-2 Thí sinh
+  li.nav-item
+    a.nav-link(href='/admin/bai-thi' class={active: currentURL === '/admin/bai-thi'})
+      i.material-icons receipt_long
+      span.ml-2 Bài thi
+  li.nav-item
+    a.nav-link(href='#ranking' data-toggle='collapse' role='button' aria-expanded='false' aria-control='ranking' class={active: (currentURL === '/admin/xep-hang') || (currentURL === '/admin/xep-hang/don-vi/THCS') || (currentURL === '/admin/xep-hang/don-vi/THPT') || (currentURL === '/admin/xep-hang/don-vi/CD') || (currentURL === '/admin/xep-hang/don-vi/DH')})
+      i.material-icons military_tech
+      span.ml-2 Xếp hạng
+      i.material-icons.float-right arrow_drop_down
+    .collapse.show#ranking
+      nav.nav.flex-column.ml-4
+        li.nav-item
+          a.nav-link(href='/admin/xep-hang' class={active: currentURL === '/admin/xep-hang'})
+            i.material-icons star_rate
+            span.ml-2 Xếp hạng chung
+        li.nav-item
+          a.nav-link(href='/admin/xep-hang/don-vi/THCS' class={active: currentURL === '/admin/xep-hang/don-vi/THCS'})
+            i.material-icons location_on
+            span.ml-2 Đơn vị THCS
+        li.nav-item
+          a.nav-link(href='/admin/xep-hang/don-vi/THPT' class={active: currentURL === '/admin/xep-hang/don-vi/THPT'})
+            i.material-icons location_on
+            span.ml-2 Đơn vị THPT
+        li.nav-item
+          a.nav-link(href='/admin/xep-hang/don-vi/CD' class={active: currentURL === '/admin/xep-hang/don-vi/CD'})
+            i.material-icons location_on
+            span.ml-2 Đơn vị Cao đẳng
+        li.nav-item
+          a.nav-link(href='/admin/xep-hang/don-vi/DH' class={active: currentURL === '/admin/xep-hang/don-vi/DH'})
+            i.material-icons location_on
+            span.ml-2 Đơn vị Đại học
+
+  li.nav-item
+    a.nav-link(href='#questions' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='questions'
+      class={active: (currentURL === '/questions/section-1') ||
+        (currentURL === '/questions/section-2') ||
+        (currentURL === '/questions/section-3') ||
+          (currentURL === '/questions/section-4')
+      }
+    )
+      i.material-icons bar_chart
+      span.ml-2 Câu hỏi
+      i.material-icons.float-right arrow_drop_down
+    .collapse.show#questions
+      nav.nav.flex-column.ml-4
+        li.nav-item
+          a.nav-link(href='/questions/section-1' class={active: currentURL === '/questions/section-1'})
+            i.material-icons looks_one
+            span.ml-2 Phần 1
+        li.nav-item
+          a.nav-link(href='/questions/section-2' class={active: currentURL === '/questions/section-2'})
+            i.material-icons looks_two
+            span.ml-2 Phần 2
+        li.nav-item
+          a.nav-link(href='/questions/section-2-hinh-nen' class={active: currentURL === '/questions/section-2-hinh-nen'})
+            i.material-icons looks_two
+            span.ml-2 Phần 2 - Hình nền
+        li.nav-item
+          a.nav-link(href='/questions/section-3' class={active: currentURL === '/questions/section-3'})
+            i.material-icons looks_3
+            span.ml-2 Phần 3
+        li.nav-item
+          a.nav-link(href='/questions/section-4' class={active: currentURL === '/questions/section-4'})
+            i.material-icons looks_4
+            span.ml-2 Phần 4
+  li.nav-item
+    a.nav-link(href='/admin/thoi-gian-thi' class={active: currentURL === '/admin/thoi-gian-thi'})
+      i.material-icons alarm_on
+      span.ml-2 Thời gian thi
+  li.nav-item
+    a.nav-link(href='/admin/quan-tri' class={active: currentURL === '/admin/quan-tri'})
+      i.material-icons verified_user
+      span.ml-2 Quản trị

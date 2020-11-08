@@ -1,0 +1,149 @@
+extends layout
+
+block content
+  section.bg__1.min-vh-100(style="background-position: 0 60px;")
+    include particals/navbarUser.pug
+    .container.mt-5
+      .card.bg__card.p-4.p-md-5
+        .row
+          .col-lg-5
+            .d-flex.align-items-center
+              img(src="https://via.placeholder.com/64" alt="64x64")
+              .ml-3
+                if user
+                  a.text-reset(href="/users/me") #{user.name}
+                  //- div ID: #{user.identity}
+                  br
+                  a(href="/users/change-password") Change password
+            .border.rounded.p-3.mt-3
+              table
+                tbody
+                  tr
+                    td
+                      div Class/Grade:&nbsp;
+                    td.pl-3
+                      strong.font-weight-bold #{user.grade}
+                  tr
+                    td
+                      div Class name:&nbsp;
+                    td.pl-3
+                      strong.font-weight-bold #{user.classRoom}
+                  tr
+                    td
+                      div Background:&nbsp;
+                    td.pl-3
+                      strong.font-weight-bold #{user.school}
+                  tr
+                    td
+                      div School name:&nbsp;
+                    td.pl-3
+                      strong.font-weight-bold #{user.nameSchool}
+                  tr
+                    td
+                      div Town/District:&nbsp;
+                    td.pl-3
+                      strong.font-weight-bold #{user.district}
+            //- .text-primary.font-weight-bold.mt-4 Xếp hạng Tuần 1
+            //- ul.list-group.mt-2
+            //-   li.list-group-item.border.font-weight-normal.px-4
+            //-     a.text-reset(data-toggle="collapse" href="#top1tuan" role="button" aria-expanded="false")
+            //-       .font-weight-bold 1. Nguyễn Thành Lộc
+            //-       .row.m-0.no-gutters
+            //-         .col-5 Điểm: 400
+            //-         .col-7 Thời gian: 640s
+            //-       #top1tuan.collapse
+            //-         .row.m-0.no-gutters
+            //-           .col-5 Khối: 12
+            //-           .col-7 Lớp: 12A3
+            //-         div Trường: THPT Võ THị Sáu
+            //-         div Huyện: Đất Đỏ
+            //-   li.list-group-item.border.font-weight-normal.px-4
+            //-     a.text-reset(data-toggle="collapse" href="#top2tuan" role="button" aria-expanded="false")
+            //-       .font-weight-bold 2. Nguyễn Lộc Thành
+            //-       .row.m-0.no-gutters
+            //-         .col-5 Điểm: 399
+            //-         .col-7 Thời gian: 639s
+            //-       #top2tuan.collapse
+            //-         .row.m-0.no-gutters
+            //-           .col-5 Khối: 12
+            //-           .col-7 Lớp: 12A3
+            //-         div Trường: THPT Võ THị Sáu
+            //-         div Huyện: Đất Đỏ
+            //- .text-primary.font-weight-bold.mt-4 Xếp hạng Đợt 1
+            //- ul.list-group.mt-2
+            //-   li.list-group-item.border.font-weight-normal.px-4
+            //-     a.text-reset(data-toggle="collapse" href="#top1dot" role="button" aria-expanded="false")
+            //-       .font-weight-bold 1. Nguyễn Thành Lộc
+            //-       .row.m-0.no-gutters
+            //-         .col-5 Điểm: 400
+            //-         .col-7 Thời gian: 640s
+            //-       #top1dot.collapse
+            //-         .row.m-0.no-gutters
+            //-           .col-5 Khối: 12
+            //-           .col-7 Lớp: 12A3
+            //-         div Trường: THPT Võ THị Sáu
+            //-         div Huyện: Đất Đỏ
+            //-   li.list-group-item.border.font-weight-normal.px-4
+            //-     a.text-reset(data-toggle="collapse" href="#top2dot" role="button" aria-expanded="false")
+            //-       .font-weight-bold 2. Nguyễn Lộc Thành
+            //-       .row.m-0.no-gutters
+            //-         .col-5 Điểm: 399
+            //-         .col-7 Thời gian: 639s
+            //-       #top2dot.collapse
+            //-         .row.m-0.no-gutters
+            //-           .col-5 Khối: 12
+            //-           .col-7 Lớp: 12A3
+            //-         div Trường: THPT Võ THị Sáu
+            //-         div Huyện: Đất Đỏ
+
+          .col-lg-7.mt-4.mt-lg-0
+            h6(style="color: #3d5170").font-weight-bold.m-0 Remaining:&nbsp;
+              if user
+                if user.lanThi.luotThi < 0
+                  span 0
+                else
+                  span #{user.lanThi.luotThi}
+            h5.text-center.text-sm-left
+              input#index__thoigianconlai.d-none(value=formatedThoiGianThiFinishDate ? `${formatedThoiGianThiFinishDate} ${thoiGianThi.finishTime} ${thoiGianThi.timeZone}` : null)
+              if thoiGianThi
+                .small.font-weight-normal Starting at &nbsp;
+                  strong.font-weight-bold #{thoiGianThi.startTime}
+                  span ,&nbsp;
+                  strong.font-weight-bold #{thoiGianThi.startDate}
+                .small.font-weight-normal And finish at&nbsp;
+                  strong.font-weight-bold #{thoiGianThi.finishTime}
+                  span ,&nbsp;
+                  strong.font-weight-bold #{thoiGianThi.finishDate}
+                .small.font-weight-normal.mt-3 Time remaining: &nbsp;
+                  span.font-weight-bold#index__thoigianconlai__dd 0
+                  span &nbsp;day&nbsp;
+                  span.font-weight-bold#index__thoigianconlai__hr 0
+                  span &nbsp;hour&nbsp;
+                  span.font-weight-bold#index__thoigianconlai__min 0
+                  span &nbsp;min&nbsp;
+                  span.font-weight-bold#index__thoigianconlai__sec 0
+                  span &nbsp;second
+              else
+                span Chưa có thời gian thi
+            table.table.table-hover.table-bordered.mb-2.mt-2
+              thead.bg-light
+                tr
+                  th.align-middle(scope='col' style='width: 5%') #
+                  th.align-middle(scope='col') Round
+                  th.align-middle(scope='col') Point
+                  th.align-middle(scope='col') Time
+              if(baiThiTotNhat.length > 0)
+                tbody
+                  -var i = 1;
+                  -for(var iBaiThi of baiThiTotNhat)
+                    tr
+                      td= i++
+                      td= iBaiThi.exam
+                      td= iBaiThi.scope
+                      td= iBaiThi.time
+                  tr.bg-light
+                    td.font-weight-bold(colspan='2') Summary:
+                    td #{summaryScore}
+                    td #{summaryTime}
+            //- a(href='/users/ranking')
+              | Xem chi tiết kết quả

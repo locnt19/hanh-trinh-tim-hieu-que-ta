@@ -1,0 +1,40 @@
+extends layout
+
+block scripts
+  script(src='/javascripts/section-4.js')
+
+block content
+  form.round__4(name="exams_section4" method='POST')
+    section.bg__5
+      .container.py-3.px-0.min-vh-100
+        if exams
+          .question__wrapper.mx-auto
+            h3.font-weight-bold #{title}
+              input.d-none(name='lanThi' value=infoUser.lanThi.luotThi)
+              input.d-none(name='user' value=infoUser._id)
+              input.d-none(name='exam' value=exams.code)
+              input.d-none#submit_time_summary(name='time' value='0')
+            .user-select-none.card.bg__card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-3.pb-md-4(style='min-height: 500px')
+              .row
+                .col-12.text-center
+                  h4.mb-0#timer 0
+                //- .col-md-6
+                .col-6.px-2.px-md-3
+                  h4.text-center Anwsers
+                  .section4__max__height.bg-white.px-3.pt-0.pb-3.border.rounded
+                    -for(var item of exams.questions)
+                      -var index = exams.questions.indexOf(item)
+                      .my-3
+                        p.mb-2 Question #{index + 1}: #{item.question}
+                        input.d-none(name=`answers[${index}][code]` value=item.code)
+                        .px-3.py-2.border.rounded
+                          .dragula-container.left(class=`left${index}` style='min-height: 24px')
+                            input.d-none.anwser(name=`answers[${index}][answer]`)
+                //- .col-md-6.mt-4.mt-md-0
+                .col-6.px-2.px-md-3
+                  h4.text-center Questions
+                  .section4__max__height.bg-white.dragula-container.right.px-3.py-3.border.rounded
+                    -for(var item of randomAnwser)
+                      .user-select-none(data-anwser=item.true).px-3.py-2.my-2.border.rounded #{item.a}
+              .text-center.mt-3
+                button.btn.btn-primary#submitSection4 Finish

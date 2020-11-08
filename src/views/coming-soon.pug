@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  section.bg__1
+    .container.py-3.min-vh-100
+      .middle__center__md.question__wrapper.mt-5.mx-auto(style='max-width: 500px')
+        .card.bg__card.text-center.p-4.p-sm-5
+          input#comingsoon_ok.d-none(value=time ? `${time.startDate} ${time.startTime} ${time.timeZone}` : null)
+          #comingsoon
+            h5.font-weight-bold COMING SOON
+            .d-flex.mt-2.justify-content-around.justify-content-lg-center
+              .mx-lg-4
+                .h4.mb-0.font-weight-bold#comingsoon_day 00
+                div days
+              .mx-lg-4
+                .h4.mb-0.font-weight-bold#comingsoon_hr 00
+                div hours
+              .mx-lg-4
+                .h4.mb-0.font-weight-bold#comingsoon_min 00
+                div minutes
+              .mx-lg-4
+                .h4.mb-0.font-weight-bold#comingsoon_sec 00
+                div seconds
+          a.mt-2.small.font-weight-bold(href="/") Back to Home

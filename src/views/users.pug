@@ -1,0 +1,46 @@
+block var
+
+doctype html
+html
+  head
+    title= title
+
+    //- Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    //- Bootstrap CSS
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css' integrity='sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk' crossorigin='anonymous')
+    link(rel='stylesheet' href='https://unpkg.com/shards-ui@latest/dist/css/shards.min.css')
+
+    //- Font icons
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.6/css/all.css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap')
+
+    //- My styles
+    link(rel='stylesheet' href='/stylesheets/toastify.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+  body.bg__body.min-vh-100
+    if flash.message
+      #server-message.d-none= flash.message
+    include particals/navbarUser.pug
+    .container.py-4.py-lg-5
+        .card.p-4
+          .row
+            .col-lg-3
+              div.list-group
+                a(href="/users/me" class={active: currentURL === '/me'}).list-group-item-action.list-group-item.py-2 Personal Information
+                a(href="/users/change-password" class={active: currentURL === '/change-password'}).list-group-item-action.list-group-item.py-2 Change your password
+                //- a(href="/users/ranking" class={active: currentURL === '/ranking'}).list-group-item-action.list-group-item Xếp hạng của tôi
+            .col-lg-9.mt-4.mt-lg-0
+              block content
+
+    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js')
+    script(src='/javascripts/dragula.min.js')
+    script(src='/javascripts/toastify.js')
+    script(src='/javascripts/scripts.js')
+    block scripts

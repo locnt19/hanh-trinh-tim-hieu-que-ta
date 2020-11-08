@@ -1,0 +1,51 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/admin/users'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Thí sinh
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        table#table_users.table.table-bordered.dt-responsive.nowrap
+          thead.bg-light
+            tr
+              th
+              th.align-middle(scope='col') Họ và tên
+              th.align-middle(scope='col') Lượt
+                br
+                | thi
+              th.align-middle(scope='col') Giới tính
+              th.align-middle(scope='col') Email
+              th.align-middle(scope='col') Năm sinh
+              th.align-middle(scope='col') Huyện/Thành Phố
+              th.align-middle(scope='col') Cấp bậc
+              th.align-middle(scope='col') Trường
+              th.align-middle(scope='col') Lớp
+              th.align-middle(scope='col') Tên lớp
+              th.align-middle(scope='col') Tỉnh
+              th.align-middle(scope='col') ID
+              th.align-middle(scope='col') Chi tiết lượt thi
+          tbody
+            if usersList !== null && usersList.length > 0
+              -for(let user of usersList)
+                tr
+                  td
+                  td #{user.name}
+                  td #{user.lanThi.luotThi}
+                  td #{user.sex}
+                  td #{user.email}
+                  td #{user.birthday}
+                  td #{user.district}
+                  td #{user.school}
+                  td #{user.nameSchool}
+                  td #{user.grade}
+                  td #{user.classRoom}
+                  td #{user.province}
+                  td #{user._id}
+                  td
+                    .mb-2 Phần 1: #{user.lanThi.phan1 ? 'Đã thi' : 'Chưa thi'}
+                    .mb-2 Phần 2: #{user.lanThi.phan2 ? 'Đã thi' : 'Chưa thi'}
+                    .mb-2 Phần 3: #{user.lanThi.phan3 ? 'Đã thi' : 'Chưa thi'}
+                    .mb-2 Phần 4: #{user.lanThi.phan4 ? 'Đã thi' : 'Chưa thi'}

@@ -1,0 +1,144 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/admin/thoi-gian-thi'
+
+block scripts
+  script.
+    function onOffForm(formName) {
+      $(`${formName} .thoigianthi_edit`).click(function () {
+        $(this).addClass('d-none')
+        $(`${formName} input`).removeAttr('readonly')
+        $(`${formName} .actions`).removeClass('d-none')
+      })
+      $(`${formName} .thoigianthi_cancel`).click(function () {
+        $(`${formName} input`).attr('readonly', true)
+        $(`${formName} .actions`).addClass('d-none')
+        $(`${formName} .thoigianthi_edit`).removeClass('d-none')
+      })
+    }
+    onOffForm('#thoigianthi_dot1');
+    onOffForm('#thoigianthi_dot2');
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Thời gian thi
+  .row.m-0
+    .col-md-6.col-lg-5.p-0.px-md-3
+      .card.p-4
+        if ThoiGianThi && ThoiGianThi.length > 0
+          form#thoigianthi_dot1( action=`/admin/update-thoi-gian-thi/${ThoiGianThi[0]._id}` method='POST')
+            .row
+              .col-12 Ngày bắt đầu
+              .col-6
+                input.d-none(name='_id' value= ThoiGianThi[0]._id)
+                input.d-none(name='name' value= ThoiGianThi[0].name)
+                input.form-control(name='startDate' type='date' value= ThoiGianThi[0].startDate readonly)
+              .col-6
+                input.form-control(name='startTime' type='time' value= ThoiGianThi[0].startTime readonly)
+              .col-12.mt-4 Ngày kết thúc
+              .col-6
+                input.form-control(name='finishDate' type='date' value= ThoiGianThi[0].finishDate readonly)
+              .col-6
+                input.form-control(name='finishTime' type='time' value= ThoiGianThi[0].finishTime readonly)
+              .col-12.mt-4.actions.d-none.text-right
+                button.btn.btn-primary.thoigianthi_submit(type='submit') OK
+                button.btn.btn-link.thoigianthi_cancel(type='reset') Hủy
+              .col-12.mt-4.text-center
+                button.btn.btn-primary(type='button').thoigianthi_edit Chỉnh sửa
+        else
+          form#thoigianthi_dot1(method='POST')
+            .row
+              .col-12 Ngày bắt đầu
+              .col-6
+                input.d-none(name='name' value='Đợt 1')
+                input.form-control(name='startDate' type='date' readonly)
+              .col-6
+                input.form-control(name='startTime' type='time' readonly)
+              .col-12.mt-4 Ngày kết thúc
+              .col-6
+                input.form-control(name='finishDate' type='date' readonly)
+              .col-6
+                input.form-control(name='finishTime' type='time' readonly)
+              .col-12.mt-4.actions.d-none.text-right
+                button.btn.btn-primary.thoigianthi_submit(type='submit') OK
+                button.btn.btn-link.thoigianthi_cancel(type='reset') Hủy
+              .col-12.mt-4.text-center
+                button.btn.btn-primary(type='button').thoigianthi_edit Chỉnh sửa
+    //- .col-md-6.col-lg-5.p-0.px-md-3.mt-4.mt-md-0
+      .card.p-4
+        h5.font-weight-bold Đợt 2
+        if ThoiGianThi && ThoiGianThi.length > 1
+          form#thoigianthi_dot2(action=`/admin/update-thoi-gian-thi/${ThoiGianThi[1]._id}` method='POST')
+            .row
+              .col-12 Ngày bắt đầu
+              .col-6
+                input.d-none(name='_id' value= ThoiGianThi[1]._id)
+                input.d-none(name='name' value=ThoiGianThi[1].name)
+                input.form-control(name='startDate' type='date' value=ThoiGianThi[1].startDate readonly)
+              .col-6
+                input.form-control(name='startTime' type='time' value=ThoiGianThi[1].startTime readonly)
+              .col-12.mt-4 Ngày kết thúc
+              .col-6
+                input.form-control(name='finishDate' type='date' value=ThoiGianThi[1].finishDate readonly)
+              .col-6
+                input.form-control(name='finishTime' type='time' value=ThoiGianThi[1].finishTime readonly)
+              .col-12.mt-4.actions.d-none.text-right
+                button.btn.btn-primary.thoigianthi_submit(type='submit') OK
+                button.btn.btn-link.thoigianthi_cancel(type='reset') Hủy
+              .col-12.mt-4.text-center
+                button.btn.btn-primary(type='button').thoigianthi_edit Chỉnh sửa
+        else
+          form#thoigianthi_dot2(method='POST')
+            .row
+              .col-12 Ngày bắt đầu
+              .col-6
+                input.d-none(name='name' value='Đợt 2')
+                input.form-control(name='startDate' type='date' readonly)
+              .col-6
+                input.form-control(name='startTime' type='time' readonly)
+              .col-12.mt-4 Ngày kết thúc
+              .col-6
+                input.form-control(name='finishDate' type='date' readonly)
+              .col-6
+                input.form-control(name='finishTime' type='time' readonly)
+              .col-12.mt-4.actions.d-none.text-right
+                button.btn.btn-primary.thoigianthi_submit(type='submit') OK
+                button.btn.btn-link.thoigianthi_cancel(type='reset') Hủy
+              .col-12.mt-4.text-center
+                button.btn.btn-primary(type='button').thoigianthi_edit Chỉnh sửa
+    //- .col-md-6.col-lg-5.p-0.px-md-3.mt-4
+      .card.p-4
+        h5.font-weight-bold  Đợt - Tuần hiện tại
+        if tuanHienTai
+          form(method='POST' action='/admin/update-tuan-hien-tai').row
+            input.d-none(name='_id' value=tuanHienTai._id)
+            .col-6
+              label Đợt
+              select.form-control(name='tenDot')
+                option Đợt 1
+                option Đợt 2
+            .col-6
+              label Tuần
+              select.form-control(name='tenTuan')
+                option Tuần 1
+                option Tuần 2
+                option Tuần 3
+                option Tuần 4
+            .col-12.mt-4.text-center
+              button.btn.btn-primary(type='submit') Cập nhật
+        else
+          form(method='POST' action='/admin/create-tuan-hien-tai').row
+            .col-6
+              label Đợt
+              select.form-control(name='tenDot')
+                option Đợt 1
+                option Đợt 2
+            .col-6
+              label Tuần
+              select.form-control(name='tenTuan')
+                option Tuần 1
+                option Tuần 2
+                option Tuần 3
+                option Tuần 4
+            .col-12.mt-4.text-center
+              button.btn.btn-primary(type='submit') Tạo mới

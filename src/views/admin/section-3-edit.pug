@@ -1,0 +1,91 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/questions/section-3'
+  -var title = 'Phần 3 - Cập nhật câu hỏi'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 3 ➡ Cập nhật câu hỏi
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        .d-flex
+          small.ml-auto.mb-2
+            if deThi !== null
+              a(href='/questions/section-3') Đã có #{deThi.questions.length} câu hỏi
+            else
+              | Đề thi chưa có câu hỏi
+        form(method='POST').row
+          input.d-none(name='codeDeThi' value=deThi.code)
+          input.d-none(name='idCauHoi' value=cauHoi._id)
+          .form-group.col-12
+            textarea(name='question' placeholder="Câu hỏi").form-control=cauHoi.question
+          .form-group.col-12
+            label Địa phương:
+            select(name="location").form-control
+              if cauHoi.location === 'datdo'
+                option(value="datdo" selected) Đất Đỏ
+              else
+                option(value="datdo") Đất Đỏ
+              if cauHoi.location === 'longdien'
+                option(value="longdien" selected) Long Điền
+              else
+                option(value="longdien") Long Điền
+              if cauHoi.location === 'baria'
+                option(value="baria" selected) Bà Rịa
+              else
+                option(value="baria") Bà Rịa
+              if cauHoi.location === 'vungtau'
+                option(value="vungtau" selected) Vũng Tàu
+              else
+                option(value="vungtau") Vũng Tàu
+              if cauHoi.location === 'condao'
+                option(value="condao" selected) Côn Đảo
+              else
+                option(value="condao") Côn Đảo
+              if cauHoi.location === 'tanthanh'
+                option(value="tanthanh" selected) Tân Thành
+              else
+                option(value="tanthanh") Tân Thành
+              if cauHoi.location === 'chauduc'
+                option(value="chauduc" selected) Châu Đức
+              else
+                option(value="chauduc") Châu Đức
+              if cauHoi.location === 'xuyenmoc'
+                option(value="xuyenmoc" selected) Xuyên Mộc
+              else
+                option(value="xuyenmoc") Xuyên Mộc
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              if cauHoi.true === 'a'
+                input.custom-control-input#answer1(type='radio' name='true' value='a' checked)
+              else
+                input.custom-control-input#answer1(type='radio' name='true' value='a')
+              label.custom-control-label(for="answer1")
+            textarea(name='a' placeholder="Câu trả lời A").form-control=cauHoi.a
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              if cauHoi.true === 'b'
+                input.custom-control-input#answer2(type='radio' name='true' value='b' checked)
+              else
+                input.custom-control-input#answer2(type='radio' name='true' value='b')
+              label.custom-control-label(for="answer2")
+            textarea(name='b' placeholder="Câu trả lời B").form-control=cauHoi.b
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              if cauHoi.true === 'c'
+                input.custom-control-input#answer3(type='radio' name='true' value='c' checked)
+              else
+                input.custom-control-input#answer3(type='radio' name='true' value='c')
+              label.custom-control-label(for="answer3")
+            textarea(name='c' placeholder="Câu trả lời C").form-control=cauHoi.c
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              if cauHoi.true === 'd'
+                input.custom-control-input#answer4(type='radio' name='true' value='d' checked)
+              else
+                input.custom-control-input#answer4(type='radio' name='true' value='d')
+              label.custom-control-label(for="answer4")
+            textarea(name='d' placeholder="Câu trả lời D").form-control=cauHoi.d
+          .col-12
+            button(type="submit").btn.btn-block.btn-primary Cập nhật

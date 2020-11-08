@@ -1,0 +1,43 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/admin/bai-thi'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Bài thi
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        table#table_users.table.table-bordered.dt-responsive.nowrap
+          thead.bg-light
+            tr
+              th
+              th.align-middle(scope='col') Họ và tên
+              th.align-middle(scope='col') Phần thi
+              th.align-middle(scope='col') Điểm
+              th.align-middle(scope='col') Thời gian
+              th.align-middle(scope='col') Lượt thi
+              th.align-middle(scope='col') Tốt nhất
+              th.align-middle(scope='col') Tên lớp
+              th.align-middle(scope='col') Ngày sinh
+              th.align-middle(scope='col') Trường
+              th.align-middle(scope='col') Email
+              th.align-middle(scope='col') Đã thi
+              th.align-middle(scope='col') ID
+          tbody
+            if listBaiThi !== null && listBaiThi.length > 0
+              -for(let item of listBaiThi)
+                tr
+                  td
+                  td #{item.name}
+                  td #{item.exam}
+                  td #{item.scope}
+                  td #{item.time}
+                  td #{item.lanThi}
+                  td #{item.bestest}
+                  td #{item.classRoom}
+                  td #{item.birthday}
+                  td #{item.nameSchool}
+                  td #{item.email}
+                  td #{item.createdAt}
+                  td #{item._id}

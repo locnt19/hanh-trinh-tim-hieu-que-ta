@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .bg__1
+    .login__wrapper.p-0.container.pt-sm-4.pt-md-5
+      .login__container.bg__image__page2.bg__card.shadow.p-3.p-md-5
+        .h4.mb-0 Hành trình
+        .h2.mb-0 Tìm hiểu quê ta
+        form(action='/users/login' method='POST').login__form.mt-4
+          .form-group
+            input.form-control(name='email' type='email' placeholder='Email' value= values ? values.email : '')
+          .form-group
+            input.form-control(name='password' type='password' placeholder='Password')
+          button(type='submit').btn.btn-block.btn-primary Đăng nhập
+          .text-center.small.font-weight-normal.mt-3
+            span Chưa có tài khoản?&nbsp;
+            a(href='/users/register') Đăng kí ngay!

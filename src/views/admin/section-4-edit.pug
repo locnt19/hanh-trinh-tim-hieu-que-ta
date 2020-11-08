@@ -1,0 +1,29 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/questions/section-4'
+  -var title = 'Phần 4 - Cập nhật câu hỏi'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 4 ➡ Cập nhật câu hỏi
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        .d-flex
+          small.ml-auto.mb-2
+            if deThi !== null
+              a(href='/questions/section-4') Đã có #{deThi.questions.length} câu hỏi
+            else
+              | Đề thi chưa có câu hỏi
+        form(method='POST').row
+          input.d-none(name='codeDeThi' value=deThi.code)
+          input.d-none(name='idCauHoi' value=cauHoi._id)
+          .form-group.col-12
+            textarea(name='question' placeholder="Câu hỏi").form-control=cauHoi.question
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer1(type='radio' name='true' value=cauHoi.code checked)
+              label.custom-control-label(for="answer1")
+            textarea(name='a' placeholder="Câu trả lời đúng").form-control=cauHoi.a
+          .col-12
+            button(type="submit").btn.btn-block.btn-primary Cập nhật

@@ -1,0 +1,75 @@
+extends layout
+
+block content
+  .bg__1
+    .login__wrapper.p-0.container.pt-sm-4
+      .login__container.shadow.p-3.p-md-5.bg__card
+        .h4.mb-0 Hành trình
+        .h2.mb-0 Tìm hiểu quê ta
+        form(action='/users/register' method='POST').row.mt-4
+          .col-md-6.form-group
+            input.form-control(name='name' placeholder='Họ và tên' value=values ? values.name : null required)
+          .col-md-6.form-group
+            .row
+              .col-7.d-flex
+                input.form-control(name='dd' type='number' min='1' max='31' placeholder='Ngày' required)
+                input.ml-3.form-control(name='mm' type='number' min='1' max='12' placeholder='Tháng' required)
+              .col-5.pl-0
+                input.form-control(name='yyyy' type='number' placeholder='Năm sinh' required)
+          .col-md-6.form-group
+            .fake__select.dropdown
+              button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                input.w-100.border-0.user-select-none(name='sex' value=values ? values.sex : null placeholder='Giới tính' style='outline: none' readonly)
+                span.material-icons(style='font-size: inherit') keyboard_arrow_down
+              .dropdown-menu
+                .dropdown-item Nam
+                .dropdown-item Nữ
+          .col-md-6.form-group
+            .fake__select.dropdown
+              button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                input.w-100.border-0.user-select-none(name='district' value=values ? values.district : null placeholder='Thị xã/Huyện/Thành phố' style='outline: none' readonly)
+                span.material-icons(style='font-size: inherit') keyboard_arrow_down
+              .dropdown-menu
+                .dropdown-item Thành phố Vũng Tàu
+                .dropdown-item Thành phố Bà Rịa
+                .dropdown-item Huyện Châu Đức
+                .dropdown-item Huyện Xuyên Mộc
+                .dropdown-item Huyện Long Điền
+                .dropdown-item Huyện Đất Đỏ
+                .dropdown-item Thị xã Phú Mỹ
+                .dropdown-item Huyện Côn Đảo
+          .col-md-6.form-group
+            .fake__select.dropdown
+              button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                input.w-100.border-0.user-select-none(name='school' value=values ? values.school : null placeholder='Nền tảng' style='outline: none' readonly)
+                span.material-icons(style='font-size: inherit') keyboard_arrow_down
+              .dropdown-menu
+                .dropdown-item Trung học cơ sở
+                .dropdown-item Trung học phổ thông
+                .dropdown-item Cao đẳng
+                .dropdown-item Đại học
+          .col-md-6.form-group
+            input.form-control(name='nameSchool' placeholder='Tên trường' value=values ? values.nameSchool : null required)
+          .col-md-6.form-group
+            .fake__select.dropdown
+              button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                input.w-100.border-0.user-select-none(name='grade' value=values ? values.grade : null placeholder='Khối/Bậc' style='outline: none' readonly)
+                span.material-icons(style='font-size: inherit') keyboard_arrow_down
+              .dropdown-menu
+                -for(var i = 6; i < 13; i++)
+                  .dropdown-item Khối #{i}
+                .dropdown-item Bậc Cao Đẳng
+                .dropdown-item Bậc Đại học
+          .col-md-6.form-group
+            input.form-control(name='classRoom' value= values ? values.classRoom : null placeholder='Tên lớp' required)
+          //- .col-md-6.form-group
+          //-   input.form-control(name='identity' value= values ? values.identity : null placeholder='Chứng minh nhân dân' required)
+          .col-md-6.form-group
+            input.form-control(name='email' value= values ? values.email : null type='email' placeholder='Địa chỉ email' required)
+          .col-md-6.form-group
+            input.form-control(name='password' type='password' placeholder='Mật khẩu' required)
+          .col-12.text-center
+            button(type='submit').btn.btn-primary Đăng kí!
+            .mt-3.small.font-weight-normal
+              span Đã có tài khoản?&nbsp;
+              a(href='/users/login') Đăng nhập ngay!

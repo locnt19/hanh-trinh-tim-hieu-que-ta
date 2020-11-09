@@ -2,7 +2,7 @@ extends layout-admin.pug
 
 block var
   -var currentURL = '/questions/section-2'
-  -var title = 'Phần 1 - Danh sách câu hỏi'
+  -var title = 'Phần 2 - Danh sách câu hỏi'
 
 block content
   h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 2 ➡ Câu hỏi
@@ -11,11 +11,15 @@ block content
       .card.p-3.px-md-5.py-md-4
         .text-right.mb-2
           a.small(href='/questions/section-2/create') Thêm câu hỏi mới
-        table#table_section2_list.table.table-bordered
+        table#table_section3_list.table.table-bordered
           thead.bg-light
             tr
               th.text-center.align-middle(scope='col')
                 | #
+              th.text-center.align-middle(scope='col')
+                | Địa
+                br
+                | phương
               th.align-middle(scope='col')
                 | Câu hỏi
               th.align-middle(scope='col') Trả lời
@@ -23,10 +27,11 @@ block content
             if deThi !== null
               -for(let cauHoi of deThi.questions)
                 tr
-                  td(style='width: 70px').text-center
+                  td(style='max-width: 70px').text-center
                     .mb-2 #{cauHoi.code}
-                    a(class="material-icons" style="font-size: 16px;" href=`/questions/section-2/edit/${cauHoi._id}`) create
-                  td(style='width: 40%') #{cauHoi.question}
+                    a(class="material-icons" style="font-size: 16px;" href=`/questions/section-3/edit/${cauHoi._id}`) create
+                  td(style='max-width: 130px').text-center #{cauHoi.location}
+                  td(style='width: 35%; max-width: 50%') #{cauHoi.question}
                   td
                     .mb-2(class={'text-success font-weight-bold': cauHoi.true === 'a'}) A. #{cauHoi.a}
                     .mb-2(class={'text-success font-weight-bold': cauHoi.true === 'b'}) B. #{cauHoi.b}

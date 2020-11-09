@@ -12,8 +12,8 @@ const userSchema = mongoose.Schema({
   lanThi: {
     luotThi: { type: Number, default: 2 },
     phan1: { type: Boolean, default: false },
-    phan2: { type: Boolean, default: false },
-    phan3: { type: Boolean, default: false },
+    phan2: { type: Boolean, default: true },
+    phan3: { type: Boolean, default: true },
     phan4: { type: Boolean, default: false },
   },
   email: {

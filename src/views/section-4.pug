@@ -20,7 +20,7 @@ block content
                   h4.mb-0#timer 0
                 //- .col-md-6
                 .col-6.px-2.px-md-3
-                  h4.text-center Cột B
+                  h4.text-center A
                   .section4__max__height.bg-white.px-3.pt-0.pb-3.border.rounded
                     -for(var item of exams.questions)
                       -var index = exams.questions.indexOf(item)
@@ -31,7 +31,7 @@ block content
                           .dragula-container.left(class=`left${index}` style='min-height: 24px')
                             input.d-none.anwser(name=`answers[${index}][answer]`)
                 .col-6.px-2.px-md-3
-                  h4.text-center Cột A
+                  h4.text-center B
                   .section4__max__height.bg-white.dragula-container.right.px-3.py-3.border.rounded
                     -for(var item of randomAnwser)
                       .user-select-none(data-anwser=item.true).px-3.py-2.my-2.border.rounded #{item.a}

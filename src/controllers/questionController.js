@@ -82,9 +82,8 @@ exports.createSection2 = async (req, res) => {
       await deThiMoi.save()
       req.flash('message', 'Tạo thành công')
       res.redirect('/questions/section-2/create')
-    }
-    else {
-      // nếu tồn tại section-1 thì bổ sung câu hỏi
+    } else {
+      // nếu tồn tại section-2 thì bổ sung câu hỏi
       const deThi = await DeThi.findOne({ code: req.body.code })
       deThi.questions.push(req.body.questions[0])
       await deThi.save()
@@ -237,6 +236,8 @@ exports.editSection1234 = async (req, res) => {
       break;
     case 'P020':
       res.render('admin/section-2-hinh-nen-edit.pug', { cauHoi: cauHoi, deThi: deThi });
+    case 'P030':
+      res.render('admin/section-3-hinh-nen-edit.pug', { cauHoi: cauHoi, deThi: deThi });
       break;
     default:
       break;
@@ -288,6 +289,54 @@ exports.createSection2HinhNen = async (req, res) => {
   } catch (error) {
     req.flash('message', error)
     res.render('admin/section-2-hinh-nen-create.pug')
+  }
+}
+//#endregion
+
+//#region Phần 3 Hình nền
+exports.templateSection3HinhNen = async (req, res) => {
+  const deThi = await DeThi.findOne({ code: 'P030' })
+  res.render('admin/section-3-hinh-nen.pug', { deThi: deThi })
+}
+
+exports.templateSection3HinhNenCreate = async (req, res) => {
+  const deThi = await DeThi.findOne({ code: 'P030' })
+  res.render('admin/section-3-hinh-nen-create.pug', { deThi: deThi })
+}
+
+exports.templateSection3HinhNenEdit = async (req, res) => {
+  const deThi = await DeThi.findOne({ code: 'P030' });
+  let cauHoi;
+  for (const item of deThi.questions) {
+    if (item._id.toString() === req.params.id) {
+      cauHoi = item;
+      break;
+    }
+  }
+  res.render('admin/section-3-hinh-nen-edit.pug', { cauHoi: cauHoi, deThi: deThi });
+}
+
+exports.createSection3HinhNen = async (req, res) => {
+  try {
+    const deThiDaTonTai = await DeThi.findOne({ code: req.body.code })
+    // lưu nếu chưa tồn tại section-3-hinh-nen
+    if (deThiDaTonTai === null) {
+      const deThiMoi = new DeThi(req.body);
+      await deThiMoi.save()
+      req.flash('message', 'Tạo thành công')
+      res.redirect('/questions/section-3-hinh-nen/create')
+    }
+    else {
+      const deThi = await DeThi.findOne({ code: req.body.code })
+      deThi.questions.push(req.body.questions[0])
+      await deThi.save()
+      // thông báo tạo thành công
+      req.flash('message', 'Thêm thành công')
+      res.redirect('/questions/section-3-hinh-nen/create')
+    }
+  } catch (error) {
+    req.flash('message', error)
+    res.render('admin/section-3-hinh-nen-create.pug')
   }
 }
 //#endregion

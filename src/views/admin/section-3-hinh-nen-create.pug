@@ -1,0 +1,82 @@
+extends layout-admin.pug
+
+block var
+  -var currentURL = '/questions/section-2-hinh-nen'
+  -var title = 'Phần 2 - Hình nền - Tạo câu hỏi'
+
+block content
+  h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 3 - Hình nền ➡ Tạo câu hỏi
+  .row.m-0
+    .col-12.p-0.px-lg-3
+      .card.p-3.px-md-5.py-md-4
+        .d-flex.justify-content-center.flex-wrap.mt-3
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/who is she.jpg" alt="who is she.jpg")
+            div who is she.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/where is this locate.jpg" alt="where is this locate.jpg")
+            div where is this locate.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/where is this locate 1.jpg" alt="where is this locate 1.jpg")
+            div where is this locate 1.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/where is this locate 2.jpg" alt="where is this locate 2.jpg")
+            div where is this locate 2.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/where is this locate 3.jpg" alt="where is this locate 3.jpg")
+            div where is this locate 3.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/where is this locate 4.jpg" alt="where is this locate 4.jpg")
+            div where is this locate 4.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-2/where is this locate 5.jpg" alt="where is this locate 5.jpg")
+            div where is this locate 5.jpg
+        .d-flex
+          small.ml-auto.mb-2
+            if deThi !== null
+              a(href='/questions/section-2-hinh-nen') Đã có #{deThi.questions.length} câu hỏi
+            else
+              | Đề thi chưa có câu hỏi
+        form(method='POST' action='/questions/section-2-hinh-nen/create').row
+          input.d-none(name='name' value='Phần 2 - Hình nền')
+          input.d-none(name='code' value='P020')
+          .form-group.col-12
+            select(name="questions[0][image]").form-control
+              option(value="/images/section-2/who is she.jpg") who is she.jpg
+              option(value="/images/section-2/where is this locate.jpg") where is this locate.jpg
+              option(value="/images/section-2/where is this locate 1.jpg") where is this locate 1.jpg
+              option(value="/images/section-2/where is this locate 2.jpg") where is this locate 2.jpg
+              option(value="/images/section-2/where is this locate 3.jpg") where is this locate 3.jpg
+              option(value="/images/section-2/where is this locate 4.jpg") where is this locate 4.jpg
+              option(value="/images/section-2/where is this locate 5.jpg") where is this locate 5.jpg
+          .form-group.col-12
+            textarea(name='questions[0][question]' placeholder="Câu hỏi").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer1(type='radio' name='questions[0][true]' value='a')
+              label.custom-control-label(for="answer1")
+            textarea(name='questions[0][a]' placeholder="Câu trả lời A").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer2(type='radio' name='questions[0][true]' value='b')
+              label.custom-control-label(for="answer2")
+            textarea(name='questions[0][b]' placeholder="Câu trả lời B").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer3(type='radio' name='questions[0][true]' value='c')
+              label.custom-control-label(for="answer3")
+            textarea(name='questions[0][c]' placeholder="Câu trả lời C").form-control
+          .d-flex.form-group.col-12
+            .custom-control.custom-radio
+              input.custom-control-input#answer4(type='radio' name='questions[0][true]' value='d')
+              label.custom-control-label(for="answer4")
+            textarea(name='questions[0][d]' placeholder="Câu trả lời D").form-control
+          .col-12
+            button(type="submit").btn.btn-block.btn-primary Tạo

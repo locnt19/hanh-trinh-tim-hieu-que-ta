@@ -25,20 +25,20 @@ router.post('/api', (req, res) => {
   res.json(req.body);
 });
 
-router.get('/super-api/users', async (req, res) => {
-  const users = await User.find();
-  for (const iUser of users) {
-    iUser.lanThi = {
-      luotThi: 1,
-      phan1: false,
-      phan2: false,
-      phan3: false,
-      phan4: false,
-    };
-    await iUser.save();
-  }
-  res.json(users);
-});
+// router.get('/super-api/users', async (req, res) => {
+//   const users = await User.find();
+//   for (const iUser of users) {
+//     iUser.lanThi = {
+//       luotThi: 1,
+//       phan1: false,
+//       phan2: false,
+//       phan3: false,
+//       phan4: false,
+//     };
+//     await iUser.save();
+//   }
+//   res.json(users);
+// });
 
 router.get('/super-api/super-users', adminController.updatePointForUser);
 
@@ -46,7 +46,7 @@ router.put('/super-api/users/reset-lan-thi/:id', async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.params.id, {
       lanThi: {
-        luotThi: 1,
+        luotThi: 2,
         phan1: false,
         phan2: false,
         phan3: false,

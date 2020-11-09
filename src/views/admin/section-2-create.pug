@@ -25,6 +25,17 @@ block content
             input.d-none(name='questions[0][code]' value='Q01')
           .form-group.col-12
             textarea(name='questions[0][question]' placeholder="Câu hỏi").form-control
+          .form-group.col-12
+            label Địa phương:
+            select(name="questions[0][location]").form-control
+              option(value="datdo") Đất Đỏ
+              option(value="longdien") Long Điền
+              option(value="baria") Bà Rịa
+              option(value="vungtau") Vũng Tàu
+              option(value="condao") Côn Đảo
+              option(value="tanthanh") Tân Thành
+              option(value="chauduc") Châu Đức
+              option(value="xuyenmoc") Xuyên Mộc
           .d-flex.form-group.col-12
             .custom-control.custom-radio
               input.custom-control-input#answer1(type='radio' name='questions[0][true]' value='a')
@@ -47,21 +58,6 @@ block content
             textarea(name='questions[0][d]' placeholder="Câu trả lời D").form-control
           .col-12
             button(type="submit").btn.btn-block.btn-primary Tạo
-      .d-flex.justify-content-center.flex-wrap.mt-3
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/who is she.jpg" alt="who is she.jpg")
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/where is this locate.jpg" alt="where is this locate.jpg")
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/where is this locate 1.jpg" alt="where is this locate 1.jpg")
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/where is this locate 2.jpg" alt="where is this locate 2.jpg")
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/where is this locate 3.jpg" alt="where is this locate 3.jpg")
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/where is this locate 4.jpg" alt="where is this locate 4.jpg")
-        .card.admin__section__2__create__image.p-3.m-2
-          img(style="width: 200px" src="/images/section-2/where is this locate 5.jpg" alt="where is this locate 5.jpg")
   script.
     if (document.querySelector('#cauHoiCuoiCuaDeThi') !== null) {
       var cauHoiCuoiCuaDeThi = document.querySelector('#cauHoiCuoiCuaDeThi').value

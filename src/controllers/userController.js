@@ -18,11 +18,11 @@ exports.templateRegister = (req, res) => {
 }
 
 exports.templateProfile = (req, res) => {
-  res.render('me.pug', { title: 'Personal Information' })
+  res.render('me.pug', { title: 'Thông tin cá nhân' })
 };
 
 exports.templateChangePassword = (req, res) => {
-  res.render('change-password.pug', { title: 'Change password' });
+  res.render('change-password.pug', { title: 'Đổi mật khẩu' });
 }
 
 exports.templateRanking = (req, res) => {

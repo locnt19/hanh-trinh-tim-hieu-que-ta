@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  section.bg__1.min-vh-100
+  section.bg__summary.min-vh-100
     .container.py-3
       .middle__center__md.question__wrapper.mx-auto(style="max-width: 400px")
         .card.bg__card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-5.pb-md-4
@@ -14,11 +14,11 @@ block content
               .font-weight-bold Điểm: 
               .ml-auto #{scope} điểm
             .text-center.mt-4
-              a#link(href=`${next}`).btn.btn-block.btn-primary Go to&nbsp;
-                span#text_link next round
-                | &nbsp;after&nbsp;
+              a#link(href=`${next}`).btn.btn-block.btn-primary Chuyển trang&nbsp;
+                span#text_link 
+                | &nbsp;sau&nbsp;
                 span#summary_time 10
-                | &nbsp; seconds
+                | &nbsp; giây
 
 block scripts
   script(src='/javascripts/summary.js')

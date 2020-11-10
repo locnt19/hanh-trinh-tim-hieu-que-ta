@@ -15,9 +15,9 @@ function section3() {
   let section3IntervalTimer;
   let section3IntervalPendingTimer;
   let summaryTimer = 0;
-  let questionPendingTimer = 20;
+  let questionPendingTimer = 10;
   let anwserBackGroundIsCorrect = false;
-  const timeLimited = 270;
+  const timeLimited = 180;
   const $summaryTimer = $('#section3__summaryTimer');
   const $questionPendingTimer = $('#section3__questionPendingTimer');
 
@@ -52,7 +52,7 @@ function section3() {
           --questionPendingTimer;
           $questionPendingTimer.text(questionPendingTimer);
         } else {
-          showToast('Time out');
+          showToast('Chọn câu hỏi tiếp theo');
           hideListQuestion();
           checkAnwser(questionPending, false);
           clearIntervalAndResetQuestionPendingTimer();
@@ -84,10 +84,11 @@ function section3() {
   });
 
   $('.section3__question__background').on('click', function () {
-    if (!firstQuestion && !showQuestions && !doneSection3) {
+    if (!showQuestions && !doneSection3) {
       showQuestions = true;
       doneSection3 = true;
       questionPending = 5;
+      questionPendingTimer = 20;
       trueAnwserPending = $(this).data('value');
       $('.section3__question__list').removeClass('d-none');
       $(`.section3__question__item[data-item=${questionPending}]`).removeClass(
@@ -125,14 +126,14 @@ function section3() {
   function checkAnwser(questionPending, isCorrect) {
     if (isCorrect) {
       summaryCorrectAnwsered++;
-      showToast('Yeah Awesome!');
+      showToast('Đúng rồi!');
       $(`.section3__question__card__item[data-item=${questionPending}]`)
         .removeClass('pending')
         .addClass('correct')
         .off();
     } else {
       summaryWrongAnwsered++;
-      showToast('Oh nooo!');
+      showToast('Rất tiếc!');
       $(`.section3__question__card__item[data-item=${questionPending}]`)
         .removeClass('pending')
         .addClass('wrong')
@@ -162,17 +163,17 @@ function section3() {
 
   function chamDiemThi(anwserBackGroundIsCorrect = false) {
     if (anwserBackGroundIsCorrect) {
-      score = 120 - 10 * summaryWrongAnwsered; // => 120 là tổng số điểm của Round 2.
+      score = 60 - 10 * summaryWrongAnwsered; // => 120 là tổng số điểm của Round 2.
     } else {
       score = 10 * summaryCorrectAnwsered;
     }
     $('#section3__score').val(score);
     $('#section3__summaryTimeeee').val(summaryTimer);
     Toastify({
-      text: 'Go to next round after 3 seconds.',
+      text: 'Chuyển đến vòng thi tiếp theo sau 3 giây.',
       gravity: 'top',
       position: 'right',
-      duration: 2000,
+      duration: 5000,
       callback: function () {
         message = null;
       },

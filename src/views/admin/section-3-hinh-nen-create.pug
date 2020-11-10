@@ -1,8 +1,8 @@
 extends layout-admin.pug
 
 block var
-  -var currentURL = '/questions/section-2-hinh-nen'
-  -var title = 'Phần 2 - Hình nền - Tạo câu hỏi'
+  -var currentURL = '/questions/section-3-hinh-nen'
+  -var title = 'Phần 3 - Hình nền - Tạo câu hỏi'
 
 block content
   h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 3 - Hình nền ➡ Tạo câu hỏi
@@ -12,50 +12,72 @@ block content
         .d-flex.justify-content-center.flex-wrap.mt-3
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/who is she.jpg" alt="who is she.jpg")
-            div who is she.jpg
+              img(style="width: 200px" src="/images/section-3/s3-brvt.jpg" alt="s3-brvt.jpg")
+            div s3-brvt.jpg
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/where is this locate.jpg" alt="where is this locate.jpg")
-            div where is this locate.jpg
+              img(style="width: 200px" src="/images/section-3/s3-condao.jpg" alt="s3-condao.jpg")
+            div s3-condao.jpg
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/where is this locate 1.jpg" alt="where is this locate 1.jpg")
-            div where is this locate 1.jpg
+              img(style="width: 200px" src="/images/section-3/s3-vungtau.jpg" alt="s3-vungtau.jpg")
+            div s3-vungtau.jpg
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/where is this locate 2.jpg" alt="where is this locate 2.jpg")
-            div where is this locate 2.jpg
+              img(style="width: 200px" src="/images/section-3/s3-xuyenmoc.jpg" alt="s3-xuyenmoc.jpg")
+            div s3-xuyenmoc.jpg
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/where is this locate 3.jpg" alt="where is this locate 3.jpg")
-            div where is this locate 3.jpg
+              img(style="width: 200px" src="/images/section-3/s3-phumy.jpg" alt="s3-phumy.jpg")
+            div s3-phumy.jpg
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/where is this locate 4.jpg" alt="where is this locate 4.jpg")
-            div where is this locate 4.jpg
+              img(style="width: 200px" src="/images/section-3/s3-longdien.jpg" alt="s3-longdien.jpg")
+            div s3-longdien.jpg
           .text-center.m-3
             .card.admin__section__2__create__image.p-3.mb-2
-              img(style="width: 200px" src="/images/section-2/where is this locate 5.jpg" alt="where is this locate 5.jpg")
-            div where is this locate 5.jpg
+              img(style="width: 200px" src="/images/section-3/s3-baria.jpg" alt="s3-baria.jpg")
+            div s3-baria.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-3/s3-chauduc.jpg" alt="s3-chauduc.jpg")
+            div s3-chauduc.jpg
+          .text-center.m-3
+            .card.admin__section__2__create__image.p-3.mb-2
+              img(style="width: 200px" src="/images/section-3/s3-datdo.jpg" alt="s3-datdo.jpg")
+            div s3-datdo.jpg
         .d-flex
           small.ml-auto.mb-2
             if deThi !== null
-              a(href='/questions/section-2-hinh-nen') Đã có #{deThi.questions.length} câu hỏi
+              a(href='/questions/section-3-hinh-nen') Đã có #{deThi.questions.length} câu hỏi
             else
               | Đề thi chưa có câu hỏi
-        form(method='POST' action='/questions/section-2-hinh-nen/create').row
-          input.d-none(name='name' value='Phần 2 - Hình nền')
-          input.d-none(name='code' value='P020')
+        form(method='POST').row
+          input.d-none(name='name' value='Phần 3 - Hình nền')
+          input.d-none(name='code' value='P030')
           .form-group.col-12
             select(name="questions[0][image]").form-control
-              option(value="/images/section-2/who is she.jpg") who is she.jpg
-              option(value="/images/section-2/where is this locate.jpg") where is this locate.jpg
-              option(value="/images/section-2/where is this locate 1.jpg") where is this locate 1.jpg
-              option(value="/images/section-2/where is this locate 2.jpg") where is this locate 2.jpg
-              option(value="/images/section-2/where is this locate 3.jpg") where is this locate 3.jpg
-              option(value="/images/section-2/where is this locate 4.jpg") where is this locate 4.jpg
-              option(value="/images/section-2/where is this locate 5.jpg") where is this locate 5.jpg
+              option(value="/images/section-3/s3-brvt.jpg") s3-brvt.jpg
+              option(value="/images/section-3/s3-condao.jpg") s3-condao.jpg
+              option(value="/images/section-3/s3-vungtau.jpg") s3-vungtau.jpg
+              option(value="/images/section-3/s3-xuyenmoc.jpg") s3-xuyenmoc.jpg
+              option(value="/images/section-3/s3-phumy.jpg") s3-phumy.jpg
+              option(value="/images/section-3/s3-longdien.jpg") s3-longdien.jpg
+              option(value="/images/section-3/s3-baria.jpg") s3-baria.jpg
+              option(value="/images/section-3/s3-chauduc.jpg") s3-chauduc.jpg
+              option(value="/images/section-3/s3-datdo.jpg") s3-datdo.jpg
+          .form-group.col-12
+            label Địa phương:
+            select(name="questions[0][location]").form-control
+              option(value="brvt") Bà Rịa Vũng Tàu
+              option(value="condao") Côn Đảo
+              option(value="vungtau") Vũng Tàu
+              option(value="xuyenmoc") Xuyên Mộc
+              option(value="phumy") Phú Mỹ
+              option(value="longdien") Long Điền
+              option(value="baria") Bà Rịa
+              option(value="chauduc") Châu Đức
+              option(value="datdo") Đất Đỏ
           .form-group.col-12
             textarea(name='questions[0][question]' placeholder="Câu hỏi").form-control
           .d-flex.form-group.col-12

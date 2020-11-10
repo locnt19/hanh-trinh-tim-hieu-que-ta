@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.assign(`${href}`);
     }
     if (href === '/') {
-      $('#text_link').text('home');
+      $('#text_link').text('Trang chủ');
     }
     $('#summary_time').text(summaryTime);
   }, 1000);

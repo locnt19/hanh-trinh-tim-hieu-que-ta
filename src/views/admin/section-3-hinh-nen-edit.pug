@@ -1,8 +1,8 @@
 extends layout-admin.pug
 
 block var
-  -var currentURL = '/questions/section-2-hinh-nen'
-  -var title = 'Phần 2 - Hình nền - Cập nhật câu hỏi'
+  -var currentURL = '/questions/section-3-hinh-nen'
+  -var title = 'Phần 3 - Hình nền - Cập nhật câu hỏi'
 
 block content
   h5.font-weight-bold(style='color: #3d5170; padding-left: 15px') Phần 3 - Hình nền ➡ Cập nhật câu hỏi
@@ -14,12 +14,51 @@ block content
         .d-flex
           small.ml-auto.mb-2
             if deThi !== null
-              a(href='/questions/section-2-hinh-nen') Đã có #{deThi.questions.length} câu hỏi
+              a(href='/questions/section-3-hinh-nen') Đã có #{deThi.questions.length} câu hỏi
             else
               | Đề thi chưa có câu hỏi
         form(method='POST').row
           input.d-none(name='codeDeThi' value=deThi.code)
           input.d-none(name='idCauHoi' value=cauHoi._id)
+          .form-group.col-12
+            label Địa phương:
+            select(name="location").form-control
+              if cauHoi.location === 'brvt'
+                option(value="brvt" selected) Bà Rịa Vũng Tàu
+              else
+                option(value="brvt") Bà Rịa Vũng Tàu
+              if cauHoi.location === 'condao'
+                option(value="condao" selected) Côn Đảo
+              else
+                option(value="condao") Côn Đảo
+              if cauHoi.location === 'vungtau'
+                option(value="vungtau" selected) Vũng Tàu
+              else
+                option(value="vungtau") Vũng Tàu
+              if cauHoi.location === 'xuyenmoc'
+                option(value="xuyenmoc" selected) Xuyên Mộc
+              else
+                option(value="xuyenmoc") Xuyên Mộc
+              if cauHoi.location === 'phumy'
+                option(value="phumy" selected) Phú Mỹ
+              else
+                option(value="phumy") Phú Mỹ
+              if cauHoi.location === 'longdien'
+                option(value="longdien" selected) Long Điền
+              else
+                option(value="longdien") Long Điền
+              if cauHoi.location === 'baria'
+                option(value="baria" selected) Bà Rịa
+              else
+                option(value="baria") Bà Rịa
+              if cauHoi.location === 'chauduc'
+                option(value="chauduc" selected) Châu Đức
+              else
+                option(value="chauduc") Châu Đức
+              if cauHoi.location === 'datdo'
+                option(value="datdo" selected) Đất Đỏ
+              else
+                option(value="datdo") Đất Đỏ
           .form-group.col-12
             textarea(name='question' placeholder="Câu hỏi").form-control=cauHoi.question
           .d-flex.form-group.col-12

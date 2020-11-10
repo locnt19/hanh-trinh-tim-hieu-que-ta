@@ -22,7 +22,7 @@ exports.templateTrangChu = async (req, res) => {
   }
 
   res.render('index.pug', {
-    title: 'Home - Stepping back in History',
+    title: 'Trang chủ - Hành trình Tìm hiểu quê ta',
     thoiGianThi: thoiGianThi,
     formatedThoiGianThiFinishDate: formatedThoiGianThiFinishDate,
     baiThiTotNhat: baiThiTotNhat,

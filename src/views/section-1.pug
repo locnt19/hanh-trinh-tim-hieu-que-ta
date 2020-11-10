@@ -4,10 +4,10 @@ block scripts
   script(src='/javascripts/section-1.js')
 
 block content
-  section.bg__2
+  section.bg__5
     .container.py-3.min-vh-100
       .middle__center__md.question__wrapper.mx-auto
-        //- h3.text-white.font-weight-bold.ready__title Round 1: Trace back the history
+        //- h3.text-white.font-weight-bold.ready__title Vòng 1
         form(name="exams_section1" method='POST').card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-5.pb-md-4
           input.d-none(name='lanThi' value=infoUser.lanThi.luotThi)
           input.d-none(name='user' value=infoUser._id)
@@ -18,7 +18,7 @@ block content
               -var item = exams.questions[i]
               .tabs(id=`${item.code}` style='display: none')
                 input.d-none(name=`answers[${i}][code]` value=`${item.code}`)
-                h4.question__question.font-weight-bold Question #{i + 1}: #{item.question}
+                h4.question__question.font-weight-bold Câu #{i + 1}: #{item.question}
                 .question__answer
                   .custom-control.custom-radio.mt-2
                     input.custom-control-input(id=`${item.code}-a` type='radio' name=`answers[${i}][answer]` value='a')
@@ -33,8 +33,8 @@ block content
                     input.custom-control-input(id=`${item.code}-d` type='radio' name=`answers[${i}][answer]` value='d')
                     label.custom-control-label.h5(for=`${item.code}-d`) D. #{item.d}
             .text-center
-              button(type='button').btn.btn-primary.question__submit.px-5.mt-4#time_action_next Next
-              button(type='submit').d-none.btn.btn-primary.question__submit.px-5.mt-4#time_action_submit Go to next round
+              button(type='button').btn.btn-primary.question__submit.px-5.mt-4#time_action_next Tiếp theo
+              button(type='submit').d-none.btn.btn-primary.question__submit.px-5.mt-4#time_action_submit Thi vòng tiếp theo
             .mt-3
               .d-flex.align-items-center.justify-content-between
                 .question__time__sum

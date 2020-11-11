@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .bg__1
+  .bg__summary
     .login__wrapper.p-0.container.pt-sm-4
       .login__container.shadow.p-3.p-md-5.bg__card
         .h4.mb-0 Hành trình
@@ -111,7 +111,7 @@ block content
           .col-md-6.form-group
             input.form-control(name='password' type='password' placeholder='Mật khẩu' required)
           .col-12.text-center
-            button(type='submit').btn.btn-primary Đăng kí!
+            button(type='submit').btn.btn-primary Đăng kí
             .mt-3.small.font-weight-normal
               span Đã có tài khoản?&nbsp;
               a(href='/users/login') Đăng nhập ngay!

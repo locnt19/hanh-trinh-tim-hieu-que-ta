@@ -61,7 +61,7 @@ exports.templateSection1 = async (req, res) => {
         for (var i = 0; i < arrayRandom.length; i++) {
           randomQuestion.push(data.questions[arrayRandom[i]]);
         }
-        data.questions = randomQuestion.slice(0, 15);
+        data.questions = randomQuestion.slice(0, 10);
         res.render("section-1.pug", {
           title: "Vòng 1",
           exams: data,
@@ -89,20 +89,20 @@ exports.templateSection2 = async (req, res) => {
       if (!user.lanThi.phan2) {
         // user.lanThi.phan2 = true;
         // await user.save();
-        const data = await DeThi.findOne({ code: "P02" });
-        const dataImage = await DeThi.findOne({ code: "P020" });
+        // const data = await DeThi.findOne({ code: "P02" });
+        // const dataImage = await DeThi.findOne({ code: "P020" });
 
-        const arrayRandom = randomRange(data.questions.length);
-        let randomQuestion = [];
-        for (var i = 0; i < arrayRandom.length; i++) {
-          randomQuestion.push(data.questions[arrayRandom[i]]);
-        }
-        randomQuestion = randomQuestion.slice(0, 8);
-        randomQuestion.push(
-          dataImage.questions[
-            Math.floor(Math.random() * dataImage.questions.length)
-          ]
-        );
+        // const arrayRandom = randomRange(data.questions.length);
+        // let randomQuestion = [];
+        // for (var i = 0; i < arrayRandom.length; i++) {
+        //   randomQuestion.push(data.questions[arrayRandom[i]]);
+        // }
+        // randomQuestion = randomQuestion.slice(0, 8);
+        // randomQuestion.push(
+        //   dataImage.questions[
+        //     Math.floor(Math.random() * dataImage.questions.length)
+        //   ]
+        // );
         // res.render("section-2.pug", {
         //   title: "Vòng 2",
         //   examCode: data.code,

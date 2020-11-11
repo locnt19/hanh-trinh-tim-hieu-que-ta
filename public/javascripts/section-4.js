@@ -86,8 +86,8 @@ function section4() {
 
   $("#submitSection4").on("click", function (e) {
     e.preventDefault();
-    stopTimer = true;
-    clearInterval(intervalTimer);
+    // stopTimer = true;
+    // clearInterval(intervalTimer);
     dragulaContainer.destroy();
     if (!submited) {
       submited = true;

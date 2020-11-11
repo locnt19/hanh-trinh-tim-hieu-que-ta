@@ -17,9 +17,9 @@ function section1() {
   var nextQuestion = 1;
 
   var counter = {
-    maximun: listTabs.length * 10, // Maximum time for round 1
+    maximun: listTabs.length * 20, // Maximum time for round 1
     summary: 0, // Tổng thời gian  trả lời câu hỏi
-    end: 10, // Thời gian trả lời mỗi câu hỏi
+    end: 20, // Thời gian trả lời mỗi câu hỏi
     action_next: $('#time_action_next'),
     innerHTML_end: $('#time_countdown'),
     innerHTML_summary: $('#time_summary'),
@@ -31,7 +31,7 @@ function section1() {
   $('#time_action_next').click(function () {
     if (nextQuestion < listTabs.length) {
       // console.log(nextQuestion)
-      counter.end = 10; // reset thời gian trả lời 1 câu hỏi
+      counter.end = 20; // reset thời gian trả lời 1 câu hỏi
       counter.innerHTML_end.text(counter.end);
       $(`#${listTabs[nextQuestion - 1]}`).hide();
       $(`#${listTabs[nextQuestion]}`).show();
@@ -51,7 +51,7 @@ function section1() {
       counter.summary++;
       if (counter.end === 0) {
         if (nextQuestion < listTabs.length) {
-          counter.end = 10; // reset thời gian trả lời 1 câu hỏi
+          counter.end = 20; // reset thời gian trả lời 1 câu hỏi
           $(`#${listTabs[nextQuestion - 1]}`).hide();
           $(`#${listTabs[nextQuestion]}`).show();
           nextQuestion++;

@@ -48,7 +48,7 @@ router.put(
     try {
       await User.findByIdAndUpdate(req.params.id, {
         lanThi: {
-          luotThi: 2,
+          luotThi: 1,
           phan1: false,
           phan2: false,
           phan3: false,

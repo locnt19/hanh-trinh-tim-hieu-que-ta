@@ -299,8 +299,9 @@ exports.templateSection4 = async (req, res) => {
             const element = arrayRandom[index];
             randomTrueList.push(item.trueList[element]);
           }
-          cotB.push(randomTrueList.slice(0, 4));
+          cotB.push(randomTrueList);
         });
+        // res.json(cotB.concatAll())
         res.render("section-4.pug", {
           title: "Vòng 4",
           examsCode: data.code,

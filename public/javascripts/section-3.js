@@ -15,7 +15,7 @@ function section3() {
   let section3IntervalTimer;
   let section3IntervalPendingTimer;
   let summaryTimer = 0;
-  let questionPendingTimer = 10;
+  let questionPendingTimer = 20;
   let anwserBackGroundIsCorrect = false;
   const timeLimited = 600;
   const $summaryTimer = $('#section3__summaryTimer');
@@ -119,7 +119,7 @@ function section3() {
 
   function clearIntervalAndResetQuestionPendingTimer() {
     clearInterval(section3IntervalPendingTimer);
-    questionPendingTimer = 10;
+    questionPendingTimer = 20;
     $questionPendingTimer.text(questionPendingTimer);
   }
 
@@ -163,9 +163,9 @@ function section3() {
 
   function chamDiemThi(anwserBackGroundIsCorrect = false) {
     // if (anwserBackGroundIsCorrect) {
-    //   score = 60 - 10 * summaryWrongAnwsered; // => 120 là tổng số điểm của Round 2.
+    //   score = 60 - 20 * summaryWrongAnwsered; // => 120 là tổng số điểm của Round 2.
     // } else {
-    //   score = 10 * summaryCorrectAnwsered;
+    //   score = 20 * summaryCorrectAnwsered;
     // }
     score = 20 * summaryCorrectAnwsered;
     $('#section3__score').val(score);

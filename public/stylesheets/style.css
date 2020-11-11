@@ -16,7 +16,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 code {
   color: inherit;
@@ -27,7 +27,14 @@ code {
   margin: 0;
 }
 .btn {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.dropdown-menu {
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  user-select: none;
 }
 
 @media screen and (max-width: 767.98px) {
@@ -75,49 +82,49 @@ code {
 
 body {
   /* background: #f5f6f8; */
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
 
 .bg__card {
-  background-color: rgba(250, 250, 250, 0.85);
+  background-color: rgba(250, 250, 250, 0.875);
 }
 @media screen and (max-width: 767.98px) {
   .bg__card {
-    background-color: rgba(250, 250, 250, 0.85) !important;
+    background-color: rgba(250, 250, 250, 0.875) !important;
   }
 }
 
 .bg__body {
   background-color: #ffdfae;
-  background-image: url('../images/background/bg__body.png');
+  background-image: url("../images/background/bg__body.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .bg__exams {
-  background: url('../images/bg__exams.jpg') center center no-repeat fixed;
+  background: url("../images/bg__exams.jpg") center center no-repeat fixed;
   background-size: cover;
 }
 
 .bg__image__page {
-  background: url('../images/login__background2.jpg') center center no-repeat
+  background: url("../images/login__background2.jpg") center center no-repeat
     fixed;
   background-size: cover;
 }
 
 .bg__image__page2 {
-  background: url('../images/bg__login.png') center right no-repeat #fafafa;
+  background: url("../images/bg__login.png") center right no-repeat #fafafa;
   background-size: contain;
 }
 
 .bg__navbar {
-  background: url('../images/background/bg__navbar.png') 100% 100% fixed;
+  background: url("../images/background/bg__navbar.png") 100% 100% fixed;
 }
 .bg__summary {
   background-color: #e20001;
-  background-image: url('../images/background/bg__summary.jpg');
+  background-image: url("../images/background/bg__summary.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -125,7 +132,7 @@ body {
 
 .bg__1 {
   background-color: #fff2cd;
-  background-image: url('../images/background/bg_1.jpg');
+  background-image: url("../images/background/bg_1.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -133,7 +140,7 @@ body {
 
 .bg__2 {
   background-color: #7a0d24;
-  background-image: url('../images/background/bg_2.jpg');
+  background-image: url("../images/background/bg_2.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -141,7 +148,7 @@ body {
 
 .bg__3 {
   background-color: #c3b098;
-  background-image: url('../images/background/bg_3.jpg');
+  background-image: url("../images/background/bg_3.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -149,7 +156,7 @@ body {
 
 .bg__4 {
   background-color: #757575;
-  background-image: url('../images/background/bg_4.jpg');
+  background-image: url("../images/background/bg_4.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -157,7 +164,7 @@ body {
 
 .bg__5 {
   background-color: #757575;
-  background-image: url('../images/background/bg_5.jpg');
+  background-image: url("../images/background/bg_5.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -185,15 +192,15 @@ body {
 }
 
 .image__handle__error__403 {
-  background: url('../images/403.jpg');
+  background: url("../images/403.jpg");
 }
 
 .image__handle__error__404 {
-  background: url('../images/404.jpg');
+  background: url("../images/404.jpg");
 }
 
 .image__handle__error__500 {
-  background: url('../images/500.jpg');
+  background: url("../images/500.jpg");
 }
 
 .image__handle__error__403,
@@ -321,11 +328,13 @@ body {
   .login__wrapper {
     max-width: 960px;
     height: 100vh;
+    padding-top: 5rem !important;
   }
 
   .login__container {
     border-radius: 0.875rem;
-    width: 100%;
+    /* width: 100%; */
+    display: inline-block;
     min-height: auto;
   }
 
@@ -406,8 +415,8 @@ body {
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    'question1 question2 question3 question4'
-    'question5 question6 question7 question8';
+    "question1 question2 question3 question4"
+    "question5 question6 question7 question8";
 }
 
 .section2__1 {
@@ -614,8 +623,6 @@ table.dataTable {
   }
 }
 
-
-
 /* SECTION 3 */
 .section3__question__card.grid-container {
   display: grid;
@@ -623,8 +630,8 @@ table.dataTable {
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    'question1 question2'
-    'question3 question4';
+    "question1 question2"
+    "question3 question4";
 }
 
 .section3__1 {

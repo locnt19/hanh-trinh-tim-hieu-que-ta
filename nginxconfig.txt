@@ -1,0 +1,92 @@
+events {
+    worker_connections  4096;  ## Default: 1024
+}
+
+http {
+  # nguocdonglichsu
+    server {
+        listen 80;
+        listen [::]:80;
+
+        index index.html index.htm;
+
+        access_log  /var/log/nginx/nguocdonglichsu.access.log;
+        error_log /var/log/nginx/nguocdonglichsu.error.log;
+
+        client_max_body_size 25M;
+
+        server_name nguocdonglichsu.com.vn www.nguocdonglichsu.com.vn;
+
+        location ~ ^/(fonts/|images/|javascript/|js/|script/|css/|stylesheets/|flash/|media/|static/|upload/|robots.txt|humans.txt|favicon.ico) {
+            root /apps/nguocdonglichsu/public;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://127.0.0.1:5000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+}
+
+
+# hanhtrinhtimhieuqueta
+server {
+    listen 80;
+    listen [::]:80;
+
+    index index.html index.htm;
+
+    access_log  /var/log/nginx/hanhtrinhtimhieuqueta.access.log;
+    error_log /var/log/nginx/hanhtrinhtimhieuqueta.error.log;
+
+    client_max_body_size 25M;
+
+    server_name hanhtrinhtimhieuqueta.nguocdonglichsu.com.vn www.hanhtrinhtimhieuqueta.nguocdonglichsu.com.vn;
+
+    location ~ ^/(fonts/|images/|javascript/|js/|script/|css/|stylesheets/|flash/|media/|static/|upload/|robots.txt|humans.txt|favicon.ico) {
+        root /apps/hanh-trinh-tim-hieu-que-ta/public;
+        access_log off;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:5100;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# nguocdonglichsu
+server {
+        listen 80;
+        listen [::]:80;
+
+        index index.html index.htm;
+
+        access_log  /var/log/nginx/nguocdonglichsu.access.log;
+        error_log /var/log/nginx/nguocdonglichsu.error.log;
+
+        client_max_body_size 25M;
+
+        server_name nguocdonglichsu.com.vn www.nguocdonglichsu.com.vn;
+
+        location ~ ^/(fonts/|images/|javascript/|js/|script/|css/|stylesheets/|flash/|media/|static/|upload/|robots.txt|humans.txt|favicon.ico) {
+            root /apps/nguocdonglichsu/public;
+        }
+
+        location / {
+            proxy_pass http://127.0.0.1:5000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }

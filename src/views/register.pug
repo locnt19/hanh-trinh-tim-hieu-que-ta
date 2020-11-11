@@ -30,36 +30,78 @@ block content
                 input.w-100.border-0.user-select-none(name='district' value=values ? values.district : null placeholder='Thị xã/Huyện/Thành phố' style='outline: none' readonly)
                 span.material-icons(style='font-size: inherit') keyboard_arrow_down
               .dropdown-menu
-                .dropdown-item Thành phố Vũng Tàu
-                .dropdown-item Thành phố Bà Rịa
-                .dropdown-item Huyện Châu Đức
-                .dropdown-item Huyện Xuyên Mộc
-                .dropdown-item Huyện Long Điền
-                .dropdown-item Huyện Đất Đỏ
-                .dropdown-item Thị xã Phú Mỹ
-                .dropdown-item Huyện Côn Đảo
+                .dropdown-item TP. Vũng Tàu
+                .dropdown-item TP. Bà Rịa
+                .dropdown-item H. Châu Đức
+                .dropdown-item H. Xuyên Mộc
+                .dropdown-item H. Long Điền
+                .dropdown-item H. Đất Đỏ
+                .dropdown-item TX. Phú Mỹ
+                .dropdown-item H. Côn Đảo
           .col-md-6.form-group
             .fake__select.dropdown
               button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                 input.w-100.border-0.user-select-none(name='school' value=values ? values.school : null placeholder='Nền tảng' style='outline: none' readonly)
                 span.material-icons(style='font-size: inherit') keyboard_arrow_down
               .dropdown-menu
-                .dropdown-item Trung học cơ sở
+                //- .dropdown-item Trung học cơ sở
                 .dropdown-item Trung học phổ thông
-                .dropdown-item Cao đẳng
-                .dropdown-item Đại học
+                //- .dropdown-item Cao đẳng
+                //- .dropdown-item Đại học
           .col-md-6.form-group
-            input.form-control(name='nameSchool' placeholder='Tên trường' value=values ? values.nameSchool : null required)
+            //- input.form-control(name='nameSchool' placeholder='Tên trường' value=values ? values.nameSchool : null required)
+            .fake__select.dropdown
+              button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                input.w-100.border-0.user-select-none(name='nameSchool' placeholder='Tên trường' value=values ? values.nameSchool : null style='outline: none' readonly)
+                span.material-icons(style='font-size: inherit') keyboard_arrow_down
+              .dropdown-menu
+                .dropdown-item Côn Đảo - THPT Võ Thị Sáu
+                .dropdown-item Đất Đỏ - THPT Võ Thị Sáu
+                .dropdown-item Đất Đỏ - THPT Dương Bạch Mai
+                .dropdown-item Châu Đức - TT GDTX
+                .dropdown-item Châu Đức - PTDTNT
+                .dropdown-item Châu Đức - THPT Nguyễn Văn Cừ
+                .dropdown-item Châu Đức - THPT Trần Phú
+                .dropdown-item Châu Đức - THPT Nguyễn Trãi
+                .dropdown-item Châu Đức - THPT Nguyễn Du
+                .dropdown-item Châu Đức - THPT Ngô Quyền
+                .dropdown-item Long Điền - THPT Trần Quang Khải
+                .dropdown-item Long Điền - TT GDTX Long Điền - Đất Đỏ
+                .dropdown-item Long Điền - THPT Long Hải
+                .dropdown-item Long Điền - THPT Minh Đạm
+                .dropdown-item Long Điền - THPT Trần Văn Quan
+                .dropdown-item Xuyên Mộc - TT GDTX
+                .dropdown-item Xuyên Mộc - THPT Hòa Bình
+                .dropdown-item Xuyên Mộc - THPT Xuyên Mộc
+                .dropdown-item Xuyên Mộc - THPT Bưng Riềng
+                .dropdown-item Xuyên Mộc - THPT Hòa Hội
+                .dropdown-item Xuyên Mộc - THPT Phước Bửu
+                .dropdown-item Vũng Tàu - THPT Đinh Tiên Hoàng
+                .dropdown-item Vũng Tàu - THPT Nguyễn Huệ
+                .dropdown-item Vũng Tàu - THPT chuyên Lê Quý Đôn
+                .dropdown-item Vũng Tàu - THPT Nguyễn Thị Minh Khai 
+                .dropdown-item Vũng Tàu - THPT Lê Hồng Phong
+                .dropdown-item Vũng Tàu - THPT Song Ngữ
+                .dropdown-item Vũng Tàu - THPT Vũng Tàu
+                .dropdown-item Vũng Tàu - TTGDTX HN VT
+                .dropdown-item Vũng Tàu - THPT Trần Nguyên Hãn
+                .dropdown-item Bà Rịa - THPT Nguyễn Bỉnh Khiêm
+                .dropdown-item Bà Rịa - THPT Bà Rịa
+                .dropdown-item Bà Rịa - THPT Châu Thành
+                .dropdown-item Phú Mỹ - TT GDTX
+                .dropdown-item Phú Mỹ - THPT Hắc Dịch
+                .dropdown-item Phú Mỹ - THPT Trần Hưng Đạo
+                .dropdown-item Phú Mỹ - THPT Phú Mỹ
           .col-md-6.form-group
             .fake__select.dropdown
               button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                input.w-100.border-0.user-select-none(name='grade' value=values ? values.grade : null placeholder='Khối/Bậc' style='outline: none' readonly)
+                input.w-100.border-0.user-select-none(name='grade' value=values ? values.grade : null placeholder='Khối' style='outline: none' readonly)
                 span.material-icons(style='font-size: inherit') keyboard_arrow_down
               .dropdown-menu
-                -for(var i = 6; i < 13; i++)
+                -for(var i = 10; i < 13; i++)
                   .dropdown-item Khối #{i}
-                .dropdown-item Bậc Cao Đẳng
-                .dropdown-item Bậc Đại học
+                //- .dropdown-item Bậc Cao Đẳng
+                //- .dropdown-item Bậc Đại học
           .col-md-6.form-group
             input.form-control(name='classRoom' value= values ? values.classRoom : null placeholder='Tên lớp' required)
           //- .col-md-6.form-group

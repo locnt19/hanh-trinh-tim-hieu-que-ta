@@ -13,6 +13,11 @@ const deThiSchema = mongoose.Schema({
     c: { type: String },
     d: { type: String },
     true: { type: String },
+    trueList: [
+      {
+        label: { type: String },
+      },
+    ],
   }],
 }, { timestamps: true });
 

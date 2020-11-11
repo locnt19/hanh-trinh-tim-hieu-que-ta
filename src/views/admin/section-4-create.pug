@@ -18,14 +18,132 @@ block content
         form(method='POST').row
           input.d-none(name='name' value='Phần 4')
           input.d-none(name='code' value='P04')
-          if deThi !== null
-            -var deThiCuoi = deThi.questions.length - 1
-            input.d-none#cauHoiCuoiCuaDeThi(name='questions[0][code]' value=`${deThi.questions[deThiCuoi].code}`)
-          else
-            input.d-none(name='questions[0][code]' value='Q01')
           .form-group.col-12
-            textarea(name='questions[0][question]' placeholder="Câu hỏi").form-control
-          .d-flex.form-group.col-12
+            //- textarea(name='questions[0][question]' placeholder="Câu hỏi").form-control
+            .fake__select.dropdown
+              button.form-control.text-left.d-flex.align-items-center.justify-content-between.pr-2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                input.w-100.border-0.user-select-none(name='questions[0][question]' placeholder='Thị xã/Huyện/Thành phố' style='outline: none' readonly)
+                span.material-icons(style='font-size: inherit') keyboard_arrow_down
+              .dropdown-menu
+                .dropdown-item TP. Vũng Tàu
+                .dropdown-item TP. Bà Rịa
+                .dropdown-item H. Châu Đức
+                .dropdown-item H. Xuyên Mộc
+                .dropdown-item H. Long Điền
+                .dropdown-item H. Đất Đỏ
+                .dropdown-item TX. Phú Mỹ
+                .dropdown-item H. Côn Đảo
+          .form-group.col-12
+            label Danh sách câu trả lời đúng
+            select.form-control(class="admin__select2" name="trueList[]" multiple="multiple")
+              optgroup(label="TP. Bà Rịa")
+                option Phường Kim Dinh
+                option Phường Long Hương
+                option Phường Long Tâm
+                option Phường Long Toàn
+                option Phường Phước Hiệp
+                option Phường Phước Hưng
+                option Phường Phước Nguyên
+                option Phường Phước Trung
+                option Xã Hòa Long
+                option Xã Long Phước
+                option Xã Tân Hưng
+              optgroup(label="TP. Vũng Tàu")
+                option Phường 1
+                option Phường 2
+                option Phường 3
+                option Phường 4
+                option Phường 5
+                option Phường 6
+                option Phường 7
+                option Phường 8
+                option Phường 9
+                option Phường 10
+                option Phường 11
+                option Phường 12
+                option Phường Thắng Nhất
+                option Phường Thắng Nhì
+                option Phường Thắng Tam
+                option Phường Nguyễn An Ninh
+                option Phường Rạch Dừa
+                option Xã Long Sơn
+              optgroup(label="TX. Phú Mỹ")
+                option Phường Hắc Dịch
+                option Phường Mỹ Xuân
+                option Phường Phú Mỹ
+                option Phường Phước Hòa
+                option Phường Tân Phước
+                option Xã Châu Pha
+                option Xã Sông Xoài
+                option Xã Tân Hải
+                option Xã Tân Hòa
+                option Xã Tóc Tiên
+              optgroup(label="H. Châu Đức")
+                option Xã Bàu Chinh
+                option Xã Bình Ba
+                option Xã Bình Giã
+                option Xã Bình Trung
+                option Xã Cù Bị
+                option Xã Đá Bạc
+                option Xã Kim Long
+                option Xã Láng Lớn
+                option Xã Nghĩa Thành
+                option Xã Quảng Thành
+                option Xã Sơn Bình
+                option Xã Suối Nghệ
+                option Xã Suối Rao
+                option Xã Xà Bang
+                option Xã Xuân Sơn
+                option Thị trấn Ngãi Giao
+              optgroup(label="H. Đất Đỏ")
+                option Thị trấn Đất Đỏ
+                option Thị trấn Phước Hải
+                option Xã Láng Dài
+                option Xã Lộc An
+                option Xã Long Mỹ
+                option Xã Long Tân
+                option Xã Phước Hội
+                option Xã Phước Long Thọ
+              optgroup(label="H. Xuyên Mộc")
+                option Thị trấn Phước Bửu
+                option Xã Bàu Lâm
+                option Xã Bình Châu
+                option Xã Bông Trang
+                option Xã Bưng Riềng
+                option Xã Hòa Bình
+                option Xã Hòa Hiệp
+                option Xã Hòa Hội
+                option Xã Hòa Hưng
+                option Xã Phước Tân
+                option Xã Tân Lâm
+                option Xã Phước Thuận
+                option Xã Xuyên Mộc
+              optgroup(label="H. Long Điền")
+                option Thị trấn Long Điền
+                option Thị trấn Long Hải
+                option Xã An Ngãi
+                option Xã An Nhứt
+                option Xã Phước Hưng
+                option Xã Phước Tỉnh
+                option Xã Tam Phước
+              optgroup(label="QĐ. Côn Đảo")
+                option Đảo Côn Sơn
+                option Hòn Bà
+                option Hòn Bảy Cạnh
+                option Hòn Bông Lan
+                option Hòn Cau
+                option Hòn Tài Lớn
+                option Hòn Tài Nhỏ
+                option Hòn Trác Lớn
+                option Hòn Trác Nhỏ
+                option Hòn Tre Lớn
+                option Hòn Tre Nhỏ
+                option Hòn Trọc
+                option Hòn Trứng
+                option Hòn Vung
+                option Hòn Trứng Lớn
+                option Hòn Trứng Nhỏ
+          //- .d-flex.form-group.col-12
             .custom-control.custom-radio
               if deThi !== null
                 -var deThiCuoi = deThi.questions.length - 1
@@ -36,16 +154,3 @@ block content
             textarea(name='questions[0][a]' placeholder="Câu trả lời đúng").form-control
           .col-12
             button(type="submit").btn.btn-block.btn-primary Tạo
-  script.
-    if (document.querySelector('#cauHoiCuoiCuaDeThi') !== null) {
-      var cauHoiCuoiCuaDeThi = document.querySelector('#cauHoiCuoiCuaDeThi').value
-      cauHoiCuoiCuaDeThi = cauHoiCuoiCuaDeThi.slice(1)
-      cauHoiCuoiCuaDeThi = parseInt(cauHoiCuoiCuaDeThi) + 1
-      if (parseInt(cauHoiCuoiCuaDeThi) < 10) {
-        cauHoiCuoiCuaDeThi = 'Q0' + cauHoiCuoiCuaDeThi
-      } else {
-        cauHoiCuoiCuaDeThi = 'Q' + cauHoiCuoiCuaDeThi
-      }
-      document.querySelector('#cauHoiCuoiCuaDeThi').value = cauHoiCuoiCuaDeThi
-      document.querySelector('.cauHoiCuoiCuaDeThiAnwser').value = cauHoiCuoiCuaDeThi
-    }

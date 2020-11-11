@@ -14,16 +14,16 @@ block content
         table#table_section4_list.table.table-bordered
           thead.bg-light
             tr
-              th.text-center.align-middle(scope='col') #
-              th.align-middle(scope='col') Câu hỏi
-              th.align-middle(scope='col') Trả lời
+              //- th.text-center.align-middle(scope='col') #
+              th.text-center.align-middle(scope='col') Câu hỏi
+              th.text-center.align-middle(scope='col') Trả lời
           tbody
             if deThi !== null
               -for(let cauHoi of deThi.questions)
                 tr
-                  td(style='width: 70px').text-center
-                    .mb-2 #{cauHoi.code}
-                    a(class="material-icons" style="font-size: 16px;" href=`/questions/section-4/edit/${cauHoi._id}`) create
-                  td(style='width: 45%') #{cauHoi.question}
+                  //- td(style='width: 70px').text-center
+                  //-   a(class="material-icons" style="font-size: 16px;" href=`/questions/section-4/edit/${cauHoi._id}`) create
+                  td.text-center #{cauHoi.question}
                   td
-                    .mb-2 #{cauHoi.a}
+                    -for(let item of cauHoi.trueList)
+                      .mb-2 #{item.label}

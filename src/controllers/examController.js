@@ -3,6 +3,10 @@ const DeThi = require("../models/DeThi");
 const BaiThi = require("../models/BaiThi");
 const User = require("../models/User");
 
+Array.prototype.concatAll = function () {
+  return [].concat.apply([], this);
+};
+
 exports.templateReady = async (req, res) => {
   const user = await User.findOne({ _id: res.locals.user._id });
   if (user.lanThi.luotThi > 0) {
@@ -239,7 +243,7 @@ exports.templateSection3 = async (req, res) => {
           tanthanh,
           chauduc,
           xuyenmoc,
-          brvt
+          brvt,
         ];
         const newArr =
           arrayData[Math.floor(Math.random() * arrayData.length)].questions;
@@ -285,22 +289,23 @@ exports.templateSection4 = async (req, res) => {
         // user.lanThi.phan4 = true;
         // await user.save();
         const data = await DeThi.findOne({ code: "P04" });
-        const arrayRandom = randomRange(data.questions.length);
-        let randomQuestion = [];
-        for (var i = 0; i < arrayRandom.length; i++) {
-          randomQuestion.push(data.questions[arrayRandom[i]]);
-        }
-        data.questions = randomQuestion.slice(0, 20);
-
-        const randomIndexAnwser = randomRange(data.questions.length);
-        let randomAnwser = [];
-        for (var i = 0; i < randomIndexAnwser.length; i++) {
-          randomAnwser.push(data.questions[randomIndexAnwser[i]]);
-        }
+        const cotA = [];
+        const cotB = [];
+        data.questions.forEach((item) => {
+          cotA.push({ _id: item._id, question: item.question });
+          const arrayRandom = randomRange(item.trueList.length);
+          const randomTrueList = [];
+          for (let index = 0; index < arrayRandom.length; index++) {
+            const element = arrayRandom[index];
+            randomTrueList.push(item.trueList[element]);
+          }
+          cotB.push(randomTrueList.slice(0, 4));
+        });
         res.render("section-4.pug", {
           title: "Vòng 4",
-          exams: data,
-          randomAnwser: randomAnwser,
+          examsCode: data.code,
+          cotA: cotA,
+          cotB: cotB.concatAll(),
           infoUser: user,
         });
       } else {
@@ -486,58 +491,59 @@ exports.nopBaiThi3 = async (req, res) => {
 exports.nopBaiThi4 = async (req, res) => {
   try {
     const data = req.body;
-    data.scope = 0;
-    for (const item of data.answers) {
-      if (item.code === item.answer) {
-        data.scope += 10;
-      }
-    }
-    const baiThi = new BaiThi(data);
-    const deThi = await DeThi.findOne({ code: data.exam });
-    const baiThiOfUser = await BaiThi.findOne({
-      user: data.user,
-      exam: data.exam,
-    });
-    if (baiThiOfUser !== null) {
-      if (baiThiOfUser.scope > baiThi.scope) {
-        baiThiOfUser.bestest = true;
-        baiThi.bestest = false;
-      } else {
-        // baiThiOfUser.scope <= baiThi.scope
-        if (baiThiOfUser.scope === baiThi.scope) {
-          if (baiThiOfUser.time > baiThi.time) {
-            baiThiOfUser.bestest = false;
-            baiThi.bestest = true;
-          } else {
-            // baiThiOfUser.time <= baiThi.scope
-            baiThiOfUser.bestest = true;
-            baiThi.bestest = false;
-          }
-        } else {
-          // baiThiOfUser.scope < baiThi.scope
-          baiThiOfUser.bestest = false;
-          baiThi.bestest = true;
-        }
-      }
-      await baiThiOfUser.save();
-    } else {
-      baiThi.bestest = true;
-    }
-    await baiThi.save();
-    const user = await User.findOne({ _id: data.user });
-    user.lanThi.phan1 = false;
-    user.lanThi.phan2 = false;
-    user.lanThi.phan3 = false;
-    user.lanThi.phan4 = false;
-    user.lanThi.luotThi -= 1;
-    await user.save();
-    res.render("summary.pug", {
-      title: "Vòng 4",
-      examName: "Vòng 4",
-      time: baiThi.time,
-      scope: baiThi.scope,
-      next: "/",
-    });
+    res.json(data);
+    // data.scope = 0;
+    // for (const item of data.answers) {
+    //   if (item.code === item.answer) {
+    //     data.scope += 10;
+    //   }
+    // }
+    // const baiThi = new BaiThi(data);
+    // const deThi = await DeThi.findOne({ code: data.exam });
+    // const baiThiOfUser = await BaiThi.findOne({
+    //   user: data.user,
+    //   exam: data.exam,
+    // });
+    // if (baiThiOfUser !== null) {
+    //   if (baiThiOfUser.scope > baiThi.scope) {
+    //     baiThiOfUser.bestest = true;
+    //     baiThi.bestest = false;
+    //   } else {
+    //     // baiThiOfUser.scope <= baiThi.scope
+    //     if (baiThiOfUser.scope === baiThi.scope) {
+    //       if (baiThiOfUser.time > baiThi.time) {
+    //         baiThiOfUser.bestest = false;
+    //         baiThi.bestest = true;
+    //       } else {
+    //         // baiThiOfUser.time <= baiThi.scope
+    //         baiThiOfUser.bestest = true;
+    //         baiThi.bestest = false;
+    //       }
+    //     } else {
+    //       // baiThiOfUser.scope < baiThi.scope
+    //       baiThiOfUser.bestest = false;
+    //       baiThi.bestest = true;
+    //     }
+    //   }
+    //   await baiThiOfUser.save();
+    // } else {
+    //   baiThi.bestest = true;
+    // }
+    // await baiThi.save();
+    // const user = await User.findOne({ _id: data.user });
+    // user.lanThi.phan1 = false;
+    // user.lanThi.phan2 = false;
+    // user.lanThi.phan3 = false;
+    // user.lanThi.phan4 = false;
+    // user.lanThi.luotThi -= 1;
+    // await user.save();
+    // res.render("summary.pug", {
+    //   title: "Vòng 4",
+    //   examName: "Vòng 4",
+    //   time: baiThi.time,
+    //   scope: baiThi.scope,
+    //   next: "/",
+    // });
   } catch (error) {
     console.log(error);
     res.render("500.pug", { title: "Vòng 4" });

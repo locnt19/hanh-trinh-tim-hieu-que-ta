@@ -2,6 +2,7 @@ const ThoiGianThi = require("../models/ThoiGianThi");
 const DeThi = require("../models/DeThi");
 const BaiThi = require("../models/BaiThi");
 const User = require("../models/User");
+const _ = require("lodash");
 
 Array.prototype.concatAll = function () {
   return [].concat.apply([], this);
@@ -253,11 +254,6 @@ exports.templateSection3 = async (req, res) => {
             return;
           }
         });
-
-        console.log(newArr);
-        console.log("======================================");
-        console.log(arrayData);
-
         res.render("section-3.pug", {
           title: "Vòng 3",
           examName: "Vòng 3",
@@ -291,22 +287,21 @@ exports.templateSection4 = async (req, res) => {
         const data = await DeThi.findOne({ code: "P04" });
         const cotA = [];
         const cotB = [];
+        let trueList = [];
         data.questions.forEach((item) => {
           cotA.push({ _id: item._id, question: item.question });
-          const arrayRandom = randomRange(item.trueList.length);
-          const randomTrueList = [];
-          for (let index = 0; index < arrayRandom.length; index++) {
-            const element = arrayRandom[index];
-            randomTrueList.push(item.trueList[element]);
-          }
-          cotB.push(randomTrueList);
+          trueList.push(item.trueList);
         });
-        // res.json(cotB.concatAll())
+        trueList = trueList.concatAll();
+        const arrayRandomNumber = randomRange(trueList.length);
+        arrayRandomNumber.forEach((index) => {
+          cotB.push(trueList[index]);
+        });
         res.render("section-4.pug", {
           title: "Vòng 4",
           examsCode: data.code,
           cotA: cotA,
-          cotB: cotB.concatAll(),
+          cotB: cotB,
           infoUser: user,
         });
       } else {
@@ -348,36 +343,7 @@ exports.nopBaiThi1 = async (req, res) => {
     const result = compareArray(anwsersFiltered, questionsFilltered);
     baiThi.scope = result.correct.length * 10;
     baiThi.answersTrue = result.correct;
-
-    const baiThiOfUser = await BaiThi.findOne({
-      user: data.user,
-      exam: data.exam,
-    });
-    if (baiThiOfUser !== null) {
-      if (baiThiOfUser.scope > baiThi.scope) {
-        baiThiOfUser.bestest = true;
-        baiThi.bestest = false;
-      } else {
-        // baiThiOfUser.scope <= baiThi.scope
-        if (baiThiOfUser.scope === baiThi.scope) {
-          if (baiThiOfUser.time > baiThi.time) {
-            baiThiOfUser.bestest = false;
-            baiThi.bestest = true;
-          } else {
-            // baiThiOfUser.time <= baiThi.scope
-            baiThiOfUser.bestest = true;
-            baiThi.bestest = false;
-          }
-        } else {
-          // baiThiOfUser.scope < baiThi.scope
-          baiThiOfUser.bestest = false;
-          baiThi.bestest = true;
-        }
-      }
-      await baiThiOfUser.save();
-    } else {
-      baiThi.bestest = true;
-    }
+    baiThi.bestest = true;
     await baiThi.save();
     res.render("summary.pug", {
       title: "Vòng 1",
@@ -445,36 +411,7 @@ exports.nopBaiThi3 = async (req, res) => {
   try {
     const data = req.body;
     const baiThi = new BaiThi(data);
-
-    const baiThiOfUser = await BaiThi.findOne({
-      user: data.user,
-      exam: data.exam,
-    });
-    if (baiThiOfUser !== null) {
-      if (baiThiOfUser.scope > baiThi.scope) {
-        baiThiOfUser.bestest = true;
-        baiThi.bestest = false;
-      } else {
-        // baiThiOfUser.scope <= baiThi.scope
-        if (baiThiOfUser.scope === baiThi.scope) {
-          if (baiThiOfUser.time > baiThi.time) {
-            baiThiOfUser.bestest = false;
-            baiThi.bestest = true;
-          } else {
-            // baiThiOfUser.time <= baiThi.scope
-            baiThiOfUser.bestest = true;
-            baiThi.bestest = false;
-          }
-        } else {
-          // baiThiOfUser.scope < baiThi.scope
-          baiThiOfUser.bestest = false;
-          baiThi.bestest = true;
-        }
-      }
-      await baiThiOfUser.save();
-    } else {
-      baiThi.bestest = true;
-    }
+    baiThi.bestest = true;
     await baiThi.save();
     res.render("summary.pug", {
       title: "Vòng 3",
@@ -491,65 +428,53 @@ exports.nopBaiThi3 = async (req, res) => {
 
 exports.nopBaiThi4 = async (req, res) => {
   try {
-    // const data = req.body;
-    // res.json(data);
-    // data.scope = 0;
-    // for (const item of data.answers) {
-    //   if (item.code === item.answer) {
-    //     data.scope += 10;
-    //   }
-    // }
-    // const baiThi = new BaiThi(data);
-    // const deThi = await DeThi.findOne({ code: data.exam });
-    // const baiThiOfUser = await BaiThi.findOne({
-    //   user: data.user,
-    //   exam: data.exam,
-    // });
-    // if (baiThiOfUser !== null) {
-    //   if (baiThiOfUser.scope > baiThi.scope) {
-    //     baiThiOfUser.bestest = true;
-    //     baiThi.bestest = false;
-    //   } else {
-    //     // baiThiOfUser.scope <= baiThi.scope
-    //     if (baiThiOfUser.scope === baiThi.scope) {
-    //       if (baiThiOfUser.time > baiThi.time) {
-    //         baiThiOfUser.bestest = false;
-    //         baiThi.bestest = true;
-    //       } else {
-    //         // baiThiOfUser.time <= baiThi.scope
-    //         baiThiOfUser.bestest = true;
-    //         baiThi.bestest = false;
-    //       }
-    //     } else {
-    //       // baiThiOfUser.scope < baiThi.scope
-    //       baiThiOfUser.bestest = false;
-    //       baiThi.bestest = true;
-    //     }
-    //   }
-    //   await baiThiOfUser.save();
-    // } else {
-    //   baiThi.bestest = true;
-    // }
-    // await baiThi.save();
-    // const user = await User.findOne({ _id: data.user });
-    // user.lanThi.phan1 = false;
-    // user.lanThi.phan2 = false;
-    // user.lanThi.phan3 = false;
-    // user.lanThi.phan4 = false;
+    const data = req.body;
+    const answers = JSON.parse(data.answers);
+    const rawDeThi = await DeThi.findOne({ code: data.exam });
+    let scope = 0;
+    const dapAn = [];
+    rawDeThi.questions.forEach((item) => {
+      const question = item._id.toString();
+      const anwser = [];
+      item.trueList.forEach((subItem) => {
+        anwser.push(subItem._id.toString());
+      });
+      dapAn.push({ question: question, anwser: anwser });
+    });
+    answers.forEach((item) => {
+      if (item.anwser.length > 0) {
+        dapAn.forEach((subItem) => {
+          if (
+            item.question === subItem.question &&
+            item.anwser.length === subItem.anwser.length
+          ) {
+            console.log(subItem);
+            if (_.isEqual(item.anwser.sort(), subItem.anwser.sort())) {
+              scope += 20;
+            }
+          }
+        });
+      }
+    });
+    const baiThi = new BaiThi({
+      user: data.user,
+      lanThi: data.lanThi,
+      exam: data.exam,
+      scope: scope,
+      rawAnwser: answers,
+      bestest: true,
+    });
+    await baiThi.save();
+    const user = await User.findOne({ _id: data.user });
     // user.lanThi.luotThi -= 1;
-    // await user.save();
-    // res.render("summary.pug", {
-    //   title: "Vòng 4",
-    //   examName: "Vòng 4",
-    //   time: baiThi.time,
-    //   scope: baiThi.scope,
-    //   next: "/",
-    // });
+    user.dataDiem.round4.time = 0;
+    user.dataDiem.round4.scope = scope;
+    await user.save();
     res.render("summary.pug", {
       title: "Vòng 4",
       examName: "Vòng 4",
-      time: 0,
-      scope: 0,
+      time: undefined,
+      scope: scope,
       next: "/",
     });
   } catch (error) {

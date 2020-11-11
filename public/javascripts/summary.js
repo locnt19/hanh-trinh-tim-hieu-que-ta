@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
       summaryTime = 0;
       window.location.assign(`${href}`);
     }
-    if (href === '/') {
-      $('#text_link').text('Trang chủ');
-    }
+    // if (href === '/') {
+    //   $('#text_link').text('Trang chủ');
+    // }
     $('#summary_time').text(summaryTime);
   }, 1000);
   // #endregion

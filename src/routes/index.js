@@ -6,6 +6,7 @@ const adminRoutes = require("./admin");
 const examRoutes = require("./exam");
 const User = require("../models/User");
 const BaiThi = require("../models/BaiThi");
+const DeThi = require("../models/DeThi");
 const adminController = require("../controllers/adminController");
 
 const indexController = require("../controllers/indexController");
@@ -42,6 +43,41 @@ router.post("/api", (req, res) => {
 
 // router.get('/super-api/super-users', adminController.updatePointForUser);
 
+router.get("/super-api/tim-de-thi-theo-id/:id", async (req, res) => {
+  const deThi = await DeThi.find({ _id: req.params.id });
+  res.json(deThi);
+});
+
+router.get("/super-api/tim-de-thi-theo-code/:code", async (req, res) => {
+  const deThi = await DeThi.find({ code: req.params.code });
+  res.json(deThi);
+});
+
+router.get("/super-api/tim-bai-thi-theo-id/:id", async (req, res) => {
+  const baiThi = await BaiThi.find({ _id: req.params.id });
+  res.json(baiThi);
+});
+
+router.get("/super-api/users/:id", async (req, res) => {
+  const users = await User.find({ _id: req.params.id });
+  res.json(users);
+});
+
+router.get("/super-api/bai-thi-tot-nhat", async (req, res) => {
+  const baiThi = await BaiThi.find({ bestest: true });
+  res.json(baiThi);
+});
+
+router.get("/super-api/bai-thi-theo-id-user/:id", async (req, res) => {
+  const baiThi = await BaiThi.find({ user: req.params.id });
+  res.json(baiThi);
+});
+
+router.get("/super-api/bai-thi-tot-nhat-theo-id-user/:id", async (req, res) => {
+  const baiThi = await BaiThi.find({ user: req.params.id, bestest: true });
+  res.json(baiThi);
+});
+
 router.put(
   "/super-api/users/reset-lan-thi-theo-id-user/:id",
   async (req, res) => {
@@ -62,24 +98,9 @@ router.put(
   }
 );
 
-router.get("/super-api/users/:id", async (req, res) => {
-  const users = await User.find({ _id: req.params.id });
-  res.json(users);
-});
-
-router.get("/super-api/bai-thi-tot-nhat", async (req, res) => {
-  const baiThi = await BaiThi.find({ bestest: true });
-  res.json(baiThi);
-});
-
-router.get("/super-api/bai-thi-theo-id-user/:id", async (req, res) => {
-  const baiThi = await BaiThi.find({ user: req.params.id });
-  res.json(baiThi);
-});
-
-router.get("/super-api/bai-thi-tot-nhat-theo-id-user/:id", async (req, res) => {
-  const baiThi = await BaiThi.find({ user: req.params.id, bestest: true });
-  res.json(baiThi);
+router.delete("/super-api/xoa-tat-ca-user-tru-id/:id", async (req, res) => {
+  await User.deleteMany({ _id: { $ne: req.params.id } });
+  res.json({ responsiveCode: 200 });
 });
 
 router.delete("/super-api/xoa-bai-thi-theo-id/:id", async (req, res) => {

@@ -94,6 +94,40 @@ const userSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    dataDiem: {
+      round1: {
+        time: {
+          type: Number,
+        },
+        scope: {
+          type: Number,
+        },
+      },
+      round2: {
+        time: {
+          type: Number,
+        },
+        scope: {
+          type: Number,
+        },
+      },
+      round3: {
+        time: {
+          type: Number,
+        },
+        scope: {
+          type: Number,
+        },
+      },
+      round4: {
+        time: {
+          type: Number,
+        },
+        scope: {
+          type: Number,
+        },
+      },
+    },
   },
   { timestamps: true }
 );

@@ -7,15 +7,16 @@ block content
         .card.bg__card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-5.pb-md-4
           .mx-auto.question__summary
             .h4.mb-4.font-weight-bold.text-center Kết quả #{examName}
-            .d-flex
-              .font-weight-bold Thời gian: 
-              .ml-auto #{time} giây
+            if time != undefined
+              .d-flex
+                .font-weight-bold Thời gian: 
+                .ml-auto #{time} giây
             .d-flex
               .font-weight-bold Điểm: 
               .ml-auto #{scope} điểm
             .text-center.mt-4
-              a#link(href=`${next}`).btn.btn-block.btn-primary Chuyển trang&nbsp;
-                span#text_link 
+              a#link(href=`${next}`).btn.btn-block.btn-primary Chuyển trang
+                //- span#text_link 
                 | &nbsp;sau&nbsp;
                 span#summary_time 10
                 | &nbsp; giây

@@ -5,6 +5,7 @@ block scripts
 
 block content
   form.round__4(name="exams_section4" method='POST')
+    input(type="text" name="answers")#section4_answerList.d-none
     section.bg__2
       .container.py-3.px-0.min-vh-100
         .question__wrapper.mx-auto
@@ -12,11 +13,8 @@ block content
             input.d-none(name='lanThi' value=infoUser.lanThi.luotThi)
             input.d-none(name='user' value=infoUser._id)
             input.d-none(name='exam' value=examsCode)
-            input.d-none#submit_time_summary(name='time' value='0')
           .user-select-none.card.bg__card.p-3.px-sm-4.pt-sm-4.pb-sm-3.px-md-5.pt-md-3.pb-md-4(style='min-height: 500px')
             .row
-              //- .col-12.text-center
-                h4.mb-0#timer 0
               .col-6.px-2.px-md-3
                 h4.text-center Cột A
                 .section4__max__height.bg-white.px-3.pt-0.pb-3.border.rounded
@@ -24,14 +22,14 @@ block content
                     -var index = cotA.indexOf(item)
                     .my-3
                       p.mb-2 #{item.question}
-                      input.d-none(name=`answers[${index}][code]` value=item._id)
                       .px-3.py-2.border.rounded
-                        .dragula-container.left(class=`left${index}` data-indexAnwser=`${index}` style='min-height: 24px')
-                          //- input.anwser(name=`answers[${index}][answer]`)
+                        .dragula-container.left(class=`left${index}` data-question=`${item._id}` style='min-height: 30px')
               .col-6.px-2.px-md-3
                 h4.text-center Cột B
                 .section4__max__height.bg-white.dragula-container.right.px-3.py-3.border.rounded
                   -for(var item of cotB)
-                    .user-select-none(data-anwser=item._id).px-3.py-2.my-2.border.rounded #{item.label}
+                    .user-select-none(data-anwser=item._id).px-3.py-2.my-2.border.rounded
+                      div #{item.label}
+                      input(type="text" value=item._id).d-none
             .text-center.mt-3
               button.btn.btn-primary#submitSection4 Hoàn thành

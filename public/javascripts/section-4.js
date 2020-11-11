@@ -27,67 +27,27 @@ function section4() {
   });
   //#endregion
 
-  // Change value every 1 seconds
-  $(".dragula-container.left").each((index, item) => {
-    setInterval(() => {
-      if ($(item).children().length > 0) {
-        // const findInput = $(
-        //   `input[name="answers[${$(item).data("indexanwser")}][answer]"]`
-        // );
-        // console.log(findInput);
-        // if (
-        //   $(item).find(
-        //     `input[name="answers[${$(item).data("indexanwser")}][answer]"]`
-        //   ).length > 0
-        // ) {
-        //   console.log("hasdasd");
-        // } else {
-        //   $(
-        //     `<input name="answers[${$(item).data("indexanwser")}][answer]" value="" />`
-        //   ).appendTo($(item));
-        // }
-        // $(item).data("indexAnwser");
-        // console.log("Ok", $(item).data("indexanwser"));
-        // const secondChildren = $(item).children()[1];
-        // $(item).find('input').val($(secondChildren).data('anwser'));
-        // $(item).parents('.border.rounded').addClass('border-primary shadow-sm');
-      } else {
-        // $(item).find("input").val(null);
-        $(item)
-          .parents(".border.rounded")
-          .removeClass("border-primary shadow-sm");
-      }
-    }, 1000);
-  });
-
-  // Timer
-  const timeLimited = 180;
-  let currentTime = 0;
-  let stopTimer = false;
-
-  // const intervalTimer = setInterval(() => {
-  //   if (stopTimer || currentTime === timeLimited) {
-  //     stopTimer = true;
-  //     clearInterval(intervalTimer);
-  //     dragulaContainer.destroy();
-  //     if ($(document).has('form[name=exams_section4]').length > 0) {
-  //       // document.forms['exams_section4'].submit();
-  //       if (!submited) {
-  //         submited = true;
-  //         document.forms['exams_section4'].submit();
-  //       }
-  //     }
-  //   } else {
-  //     currentTime++;
-  //     $('#timer').text(currentTime);
-  //     $('.round__4 #submit_time_summary').val(currentTime);
-  //   }
-  // }, 1000);
-
   $("#submitSection4").on("click", function (e) {
     e.preventDefault();
-    // stopTimer = true;
-    // clearInterval(intervalTimer);
+    var awnserList = "[";
+    $(".dragula-container.left").each((index, element) => {
+      const question = {
+        question: $(element).data("question"),
+        anwser: [],
+      };
+      $(element)
+        .find("input")
+        .each((i, item) => {
+          question.anwser.push($(item).val());
+        });
+      if (index === 0) {
+        awnserList += JSON.stringify(question);
+      } else {
+        awnserList += "," + JSON.stringify(question);
+      }
+    });
+    awnserList += "]";
+    $("#section4_answerList").val(awnserList);
     dragulaContainer.destroy();
     if (!submited) {
       submited = true;

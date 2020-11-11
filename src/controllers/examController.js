@@ -490,8 +490,8 @@ exports.nopBaiThi3 = async (req, res) => {
 
 exports.nopBaiThi4 = async (req, res) => {
   try {
-    const data = req.body;
-    res.json(data);
+    // const data = req.body;
+    // res.json(data);
     // data.scope = 0;
     // for (const item of data.answers) {
     //   if (item.code === item.answer) {
@@ -544,6 +544,13 @@ exports.nopBaiThi4 = async (req, res) => {
     //   scope: baiThi.scope,
     //   next: "/",
     // });
+    res.render("summary.pug", {
+      title: "Vòng 4",
+      examName: "Vòng 4",
+      time: 0,
+      scope: 0,
+      next: "/",
+    });
   } catch (error) {
     console.log(error);
     res.render("500.pug", { title: "Vòng 4" });

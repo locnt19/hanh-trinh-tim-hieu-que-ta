@@ -35,17 +35,17 @@ function section4() {
         //   `input[name="answers[${$(item).data("indexanwser")}][answer]"]`
         // );
         // console.log(findInput);
-        if (
-          $(item).find(
-            `input[name="answers[${$(item).data("indexanwser")}][answer]"]`
-          ).length > 0
-        ) {
-          console.log("hasdasd");
-        } else {
-          $(
-            `<input name="answers[${$(item).data("indexanwser")}][answer]" value="" />`
-          ).appendTo($(item));
-        }
+        // if (
+        //   $(item).find(
+        //     `input[name="answers[${$(item).data("indexanwser")}][answer]"]`
+        //   ).length > 0
+        // ) {
+        //   console.log("hasdasd");
+        // } else {
+        //   $(
+        //     `<input name="answers[${$(item).data("indexanwser")}][answer]" value="" />`
+        //   ).appendTo($(item));
+        // }
         // $(item).data("indexAnwser");
         // console.log("Ok", $(item).data("indexanwser"));
         // const secondChildren = $(item).children()[1];

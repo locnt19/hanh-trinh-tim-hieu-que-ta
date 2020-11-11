@@ -131,6 +131,16 @@ router.delete(
   }
 );
 
+router.delete("/super-api/xoa-tat-ca-bai-thi", async (req, res) => {
+  BaiThi.deleteMany()
+    .then(() => {
+      res.json({ responsiveCode: 200, message: "Delete successful." });
+    })
+    .catch((error) => {
+      res.json({ responsiveCode: 200, message: error });
+    });
+});
+
 router.get("/403", (req, res) => {
   res.render("403.pug", { title: "Forbidden" });
 });

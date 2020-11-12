@@ -98,6 +98,95 @@ router.put(
   }
 );
 
+router.put(
+  "/super-api/users/reset-lan-thi-luot-thi-theo-id-user/:id/:number",
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      user.lanThi.luotThi = req.params.number;
+      await user.save();
+      res.json({ responsiveCode: 200 });
+    } catch (error) {
+      res.json(error);
+    }
+  }
+);
+
+router.put(
+  "/super-api/users/reset-lan-thi-phan-1-theo-id-user/:id",
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      user.lanThi.phan1 = false;
+      await user.save();
+      res.json({ responsiveCode: 200 });
+    } catch (error) {
+      res.json(error);
+    }
+  }
+);
+
+router.put(
+  "/super-api/users/reset-lan-thi-phan-2-theo-id-user/:id",
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      user.lanThi.phan2 = false;
+      await user.save();
+      res.json({ responsiveCode: 200 });
+    } catch (error) {
+      res.json(error);
+    }
+  }
+);
+
+router.put(
+  "/super-api/users/reset-lan-thi-phan-3-theo-id-user/:id",
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      user.lanThi.phan3 = false;
+      await user.save();
+      res.json({ responsiveCode: 200 });
+    } catch (error) {
+      res.json(error);
+    }
+  }
+);
+
+router.put(
+  "/super-api/users/reset-lan-thi-phan-4-theo-id-user/:id",
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      user.lanThi.phan4 = false;
+      await user.save();
+      res.json({ responsiveCode: 200 });
+    } catch (error) {
+      res.json(error);
+    }
+  }
+);
+
+router.put(
+  "/super-api/users/reset-lan-thi-tat-ca-phan-thi-theo-id-user/:id",
+  async (req, res) => {
+    try {
+      await User.findByIdAndUpdate(req.params.id, {
+        lanThi: {
+          phan1: false,
+          phan2: false,
+          phan3: false,
+          phan4: false,
+        },
+      });
+      res.json({ responsiveCode: 200 });
+    } catch (error) {
+      res.json(error);
+    }
+  }
+);
+
 router.delete("/super-api/xoa-tat-ca-user-tru-id/:id", async (req, res) => {
   await User.deleteMany({ _id: { $ne: req.params.id } });
   res.json({ responsiveCode: 200 });

@@ -351,6 +351,10 @@ exports.nopBaiThi1 = async (req, res) => {
     baiThi.answersTrue = result.correct;
     baiThi.bestest = true;
     await baiThi.save();
+    const user = await User.findById(data.user);
+    user.dataDiem.round1.time = baiThi.time;
+    user.dataDiem.round1.scope = baiThi.scope;
+    await user.save();
     res.render("summary.pug", {
       title: "Vòng 1",
       examName: "Vòng 1",
@@ -400,6 +404,10 @@ exports.nopBaiThi2 = async (req, res) => {
       bestest: true,
     });
     await baiThi.save();
+    const user = await User.findById(data.user);
+    user.dataDiem.round2.time = baiThi.time;
+    user.dataDiem.round2.scope = baiThi.scope;
+    await user.save();
     res.render("summary.pug", {
       title: "Vòng 2",
       examName: "Vòng 2",
@@ -419,6 +427,10 @@ exports.nopBaiThi3 = async (req, res) => {
     const baiThi = new BaiThi(data);
     baiThi.bestest = true;
     await baiThi.save();
+    const user = await User.findById(data.user);
+    user.dataDiem.round3.time = baiThi.time;
+    user.dataDiem.round3.scope = baiThi.scope;
+    await user.save();
     res.render("summary.pug", {
       title: "Vòng 3",
       examName: "Vòng 3",

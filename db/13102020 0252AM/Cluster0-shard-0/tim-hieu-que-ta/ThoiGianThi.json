@@ -1,0 +1,12 @@
+{ 
+    "_id" : ObjectId("5fa7a3b170b5e31ab4bf9a07"), 
+    "timeZone" : "UTC+7", 
+    "name" : "Đợt 1", 
+    "startDate" : "2020-11-05", 
+    "startTime" : "03:53", 
+    "finishDate" : "2021-06-06", 
+    "finishTime" : "02:52", 
+    "createdAt" : ISODate("2020-11-08T07:52:17.872+0000"), 
+    "updatedAt" : ISODate("2020-11-08T07:52:17.872+0000"), 
+    "__v" : NumberInt(0)
+}

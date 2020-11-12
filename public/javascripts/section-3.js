@@ -162,12 +162,12 @@ function section3() {
   }
 
   function chamDiemThi(anwserBackGroundIsCorrect = false) {
-    // if (anwserBackGroundIsCorrect) {
-    //   score = 60 - 20 * summaryWrongAnwsered; // => 120 là tổng số điểm của Round 2.
-    // } else {
-    //   score = 20 * summaryCorrectAnwsered;
-    // }
-    score = 20 * summaryCorrectAnwsered;
+    if (anwserBackGroundIsCorrect) {
+      score = 100 - 20 * summaryWrongAnwsered; // => 100 là tổng số điểm của Round 2.
+    } else {
+      score = 20 * summaryCorrectAnwsered;
+    }
+    // score = 20 * summaryCorrectAnwsered;
     $('#section3__score').val(score);
     $('#section3__summaryTimeeee').val(summaryTimer);
     Toastify({

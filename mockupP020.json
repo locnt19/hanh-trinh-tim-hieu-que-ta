@@ -1,0 +1,413 @@
+{
+	"name": "Phần 2 - Hình ảnh",
+	"code": "P020",
+	"questions": [{
+			"question": "TP. Vũng Tàu",
+			"location":"vungtau",
+			"image": "/images/section-2/s2-vungtau.jpg",
+			"trueList": [{
+					"true": "1",
+					"label": "Xã Long Sơn"
+				},
+				{
+					"true": "4",
+					"label": "Phường Rạch Dừa"
+				},
+				{
+					"true": "6",
+					"label": "Phường Thắng Nhất"
+				},
+				{
+					"true": "10",
+					"label": "Phường Thắng Nhì"
+				},
+				{
+					"true": "16",
+					"label": "Phường Thắng Tam"
+				},
+				{
+					"true": "8",
+					"label": "Phường Nguyễn An Ninh"
+				},
+				{
+					"true": "14",
+					"label": "Phường 1"
+				},
+				{
+					"true": "17",
+					"label": "Phường 2"
+				},
+				{
+					"true": "15",
+					"label": "Phường 3"
+				},
+				{
+					"true": "13",
+					"label": "Phường 4"
+				},
+				{
+					"true": "9",
+					"label": "Phường 5"
+				},
+				{
+					"true": "11",
+					"label": "Phường 7"
+				},
+				{
+					"true": "12",
+					"label": "Phường 8"
+				},
+				{
+					"true": "7",
+					"label": "Phường 9"
+				},
+				{
+					"true": "5",
+					"label": "Phường 10"
+				},
+				{
+					"true": "3",
+					"label": "Phường 11"
+				},
+				{
+					"true": "2",
+					"label": "Phường 12"
+				}
+			]
+		},
+		{
+			"question": "TP. Bà Rịa",
+			"location":"baria",
+			"image": "/images/section-2/s2-baria.jpg",
+			"trueList": [{
+					"true": "8",
+					"label": "Phường Kim Dinh"
+				},
+				{
+					"true": "7",
+					"label": "Phường Long Hương"
+				},
+				{
+					"true": "5",
+					"label": "Phường Long Tâm"
+				},
+				{
+					"true": "6",
+					"label": "Phường Long Toàn"
+				},
+				{
+					"true": "1",
+					"label": "Phường Phước Hiệp"
+				},
+				{
+					"true": "2",
+					"label": "Phường Phước Hưng"
+				},
+				{
+					"true": "3",
+					"label": "Phường Phước Nguyên"
+				},
+				{
+					"true": "4",
+					"label": "Phường Phước Trung"
+				},
+				{
+					"true": "10",
+					"label": "Xã Hòa Long"
+				},
+				{
+					"true": "11",
+					"label": "Xã Long Phước"
+				},
+				{
+					"true": "9",
+					"label": "Xã Tân Hưng"
+				}
+			]
+		},
+		{
+			"question": "H. Châu Đức",
+			"location":"chauduc",
+			"image": "/images/section-2/s2-chauduc.jpg",
+			"trueList": [{
+					"true": "5",
+					"label": "Xã Bàu Chinh"
+				},
+				{
+					"true": "12",
+					"label": "Xã Bình Ba"
+				},
+				{
+					"true": "8",
+					"label": "Xã Bình Giã"
+				},
+				{
+					"true": "9",
+					"label": "Xã Bình Trung"
+				},
+				{
+					"true": "1",
+					"label": "Xã Cù Bị"
+				},
+				{
+					"true": "13",
+					"label": "Xã Đá Bạc"
+				},
+				{
+					"true": "4",
+					"label": "Xã Kim Long"
+				},
+				{
+					"true": "6",
+					"label": "Xã Láng Lớn"
+				},
+				{
+					"true": "16",
+					"label": "Xã Nghĩa Thành"
+				},
+				{
+					"true": "3",
+					"label": "Xã Quảng Thành"
+				},
+				{
+					"true": "11",
+					"label": "Xã Sơn Bình"
+				},
+				{
+					"true": "15",
+					"label": "Xã Suối Nghệ"
+				},
+				{
+					"true": "14",
+					"label": "Xã Suối Rao"
+				},
+				{
+					"true": "2",
+					"label": "Xã Xà Bang"
+				},
+				{
+					"true": "10",
+					"label": "Xã Xuân Sơn"
+				},
+				{
+					"true": "7",
+					"label": "Thị trấn Ngãi Giao"
+				}
+			]
+		},
+		{
+			"question": "H. Xuyên Mộc",
+			"location":"xuyenmoc",
+			"image": "/images/section-2/s2-xuyenmoc.jpg",
+			"trueList": [{
+					"true": "12",
+					"label": "Thị trấn Phước Bửu"
+				},
+				{
+					"true": "2",
+					"label": "Xã Bàu Lâm"
+				},
+				{
+					"true": "11",
+					"label": "Xã Bình Châu"
+				},
+				{
+					"true": "9",
+					"label": "Xã Bông Trang"
+				},
+				{
+					"true": "10",
+					"label": "Xã Bưng Riềng"
+				},
+				{
+					"true": "5",
+					"label": "Xã Hòa Bình"
+				},
+				{
+					"true": "3",
+					"label": "Xã Hòa Hiệp"
+				},
+				{
+					"true": "6",
+					"label": "Xã Hòa Hội"
+				},
+				{
+					"true": "4",
+					"label": "Xã Hòa Hưng"
+				},
+				{
+					"true": "7",
+					"label": "Xã Phước Tân"
+				},
+				{
+					"true": "1",
+					"label": "Xã Tân Lâm"
+				},
+				{
+					"true": "13",
+					"label": "Xã Phước Thuận"
+				},
+				{
+					"true": "8",
+					"label": "Xã Xuyên Mộc"
+				}
+			]
+		},
+		{
+			"question": "H. Long Điền",
+			"location":"longdien",
+			"image": "/images/section-2/s2-longdien.jpg",
+			"trueList": [{
+					"true": "1",
+					"label": "Thị trấn Long Điền"
+				},
+				{
+					"true": "7",
+					"label": "Thị trấn Long Hải"
+				},
+				{
+					"true": "2",
+					"label": "Xã An Ngãi"
+				},
+				{
+					"true": "3",
+					"label": "Xã An Nhứt"
+				},
+				{
+					"true": "5",
+					"label": "Xã Phước Hưng"
+				},
+				{
+					"true": "6",
+					"label": "Xã Phước Tỉnh"
+				},
+				{
+					"true": "4",
+					"label": "Xã Tam Phước"
+				}
+			]
+		},
+		{
+			"question": "H. Đất Đỏ",
+			"location":"datdo",
+			"image": "/images/section-2/s2-datdo.jpg",
+			"trueList": [{
+					"true": "4",
+					"label": "Thị trấn Đất Đỏ"
+				},
+				{
+					"true": "8",
+					"label": "Thị trấn Phước Hải"
+				},
+				{
+					"true": "3",
+					"label": "Xã Láng Dài"
+				},
+				{
+					"true": "6",
+					"label": "Xã Lộc An"
+				},
+				{
+					"true": "7",
+					"label": "Xã Long Mỹ"
+				},
+				{
+					"true": "1",
+					"label": "Xã Long Tân"
+				},
+				{
+					"true": "5",
+					"label": "Xã Phước Hội"
+				},
+				{
+					"true": "2",
+					"label": "Xã Phước Long Thọ"
+				}
+			]
+		},
+		{
+			"question": "TX. Phú Mỹ",
+			"location":"phumy",
+			"image": "/images/section-2/s2-phumy.jpg",
+			"trueList": [{
+					"true": "2",
+					"label": "Phường Hắc Dịch"
+				},
+				{
+					"true": "1",
+					"label": "Phường Mỹ Xuân"
+				},
+				{
+					"true": "4",
+					"label": "Phường Phú Mỹ"
+				},
+				{
+					"true": "8",
+					"label": "Phường Phước Hòa"
+				},
+				{
+					"true": "7",
+					"label": "Phường Tân Phước"
+				},
+				{
+					"true": "6",
+					"label": "Xã Châu Pha"
+				},
+				{
+					"true": "3",
+					"label": "Xã Sông Xoài"
+				},
+				{
+					"true": "10",
+					"label": "Xã Tân Hải"
+				},
+				{
+					"true": "9",
+					"label": "Xã Tân Hòa"
+				},
+				{
+					"true": "5",
+					"label": "Xã Tóc Tiên"
+				}
+			]
+		},
+		{
+			"question": "Tỉnh Bà Rịa Vũng Tàu",
+			"location":"brvt",
+			"image": "/images/section-2/s2-brvt.jpg",
+			"trueList": [{
+					"true": "1",
+					"label": "Thị Xã Phú Mỹ"
+				},
+				{
+					"true": "2",
+					"label": "Huyện Châu Đức"
+				},
+				{
+					"true": "3",
+					"label": "Huyện Xuyên Mộc"
+				},
+				{
+					"true": "4",
+					"label": "Thành phố Vũng Tàu"
+				},
+				{
+					"true": "5",
+					"label": "Thành Phố Bà Rịa"
+				},
+				{
+					"true": "6",
+					"label": "Huyện Long Điền"
+				},
+				{
+					"true": "7",
+					"label": "Huyện Đất Đỏ"
+				},
+				{
+					"true": "8",
+					"label": "Huyện Côn Đảo"
+				}
+			]
+		}
+	]
+}

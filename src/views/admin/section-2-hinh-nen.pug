@@ -16,6 +16,7 @@ block content
             tr
               th
               th.align-middle(scope='col') Hình ảnh
+              th.align-middle(scope='col') Location
               th.align-middle(scope='col') Câu hỏi
               th.align-middle(scope='col') Trả lời
           tbody
@@ -23,12 +24,12 @@ block content
               -for(let cauHoi of deThi.questions)
                 tr
                   td(style="width: 5%").text-center
-                    a(class="material-icons" style="font-size: 16px;" href=`/questions/section-2-hinh-nen/edit/${cauHoi._id}`) create
                   td(style="width: 200px")
                     img(style="width: 200px" src=`${cauHoi.image}` alt=`${cauHoi.image}`)
+                  td #{cauHoi.location}
                   td #{cauHoi.question}
                   td
-                    .mb-2(class={'text-success font-weight-bold': cauHoi.true === 'a'}) A. #{cauHoi.a}
-                    .mb-2(class={'text-success font-weight-bold': cauHoi.true === 'b'}) B. #{cauHoi.b}
-                    .mb-2(class={'text-success font-weight-bold': cauHoi.true === 'c'}) C. #{cauHoi.c}
-                    .mb-2(class={'text-success font-weight-bold': cauHoi.true === 'd'}) D. #{cauHoi.d}
+                    -for(let item of cauHoi.trueList)
+                      .mb-2
+                        span #{item.true}.&nbsp;
+                        span #{item.label}

@@ -409,106 +409,18 @@ body {
 }
 
 /* SECTION 2 */
-.section2__question__card.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "question1 question2 question3 question4"
-    "question5 question6 question7 question8";
-}
-
-.section2__1 {
-  grid-area: question1;
-}
-
-.section2__2 {
-  grid-area: question2;
-}
-
-.section2__3 {
-  grid-area: question3;
-}
-
-.section2__4 {
-  grid-area: question4;
-}
-
-.section2__5 {
-  grid-area: question5;
-}
-
-.section2__6 {
-  grid-area: question6;
-}
-
-.section2__7 {
-  grid-area: question7;
-}
-
-.section2__8 {
-  grid-area: question8;
-}
-
 .section2__question__wrapper {
   overflow: hidden;
   width: 600px;
   height: 400px;
-  /* background-image: url('../images/section2.jpg'); */
   background-size: 600px 400px;
 }
-
-.section2__question__card {
-  width: 100%;
-  height: 100%;
+.section2__input {
+  width: 48px;
+  border: 0;
+  border-bottom: 1px solid #007bff;
+  outline: none;
 }
-
-.section2__backdrop {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.section2__question__card__item {
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: #212529;
-  background: #e5e5e5;
-  border: 1px inset #becad6;
-  transition: all 0.2s ease;
-}
-
-.section2__question__card__item.pending,
-.section2__question__card__item:hover {
-  font-size: 56px;
-  color: #fff;
-  background: #5a6169;
-}
-
-.section2__question__card__item.correct {
-  background: transparent;
-}
-
-.section2__question__card__item.wrong,
-.section2__question__card__item.wrong:hover {
-  background: #c4183c !important;
-}
-
-.section2__question__card__item.wrong,
-.section2__question__card__item.correct,
-.section2__question__card__item.correct:hover {
-  cursor: default;
-  font-size: 0 !important;
-}
-
 /* END SECTION 2 */
 
 .admin__section__2__create__image {

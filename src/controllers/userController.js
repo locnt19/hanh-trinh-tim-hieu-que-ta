@@ -13,8 +13,8 @@ exports.templateRegister = (req, res) => {
   if (req.cookies.token) {
     res.redirect("/");
   }
-  // res.render("register.pug", { title: "Đăng kí" });
-  res.render('403.pug', { title: 'Forbidden' });
+  res.render("register.pug", { title: "Đăng kí" });
+  // res.render('403.pug', { title: 'Forbidden' });
 };
 
 exports.templateProfile = (req, res) => {

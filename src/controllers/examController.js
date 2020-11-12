@@ -54,8 +54,8 @@ exports.templateSection1 = async (req, res) => {
     const user = await User.findOne({ _id: res.locals.user._id });
     if (user.lanThi.luotThi > 0) {
       if (!user.lanThi.phan1) {
-        // user.lanThi.phan1 = true;
-        // await user.save();
+        user.lanThi.phan1 = true;
+        await user.save();
         const data = await DeThi.findOne({ code: "P01" });
         const arrayRandom = randomRange(data.questions.length);
         let randomQuestion = [];
@@ -88,29 +88,35 @@ exports.templateSection2 = async (req, res) => {
     const user = await User.findOne({ _id: res.locals.user._id });
     if (user.lanThi.luotThi > 0) {
       if (!user.lanThi.phan2) {
-        // user.lanThi.phan2 = true;
-        // await user.save();
-        // const data = await DeThi.findOne({ code: "P02" });
-        // const dataImage = await DeThi.findOne({ code: "P020" });
-
-        // const arrayRandom = randomRange(data.questions.length);
-        // let randomQuestion = [];
-        // for (var i = 0; i < arrayRandom.length; i++) {
-        //   randomQuestion.push(data.questions[arrayRandom[i]]);
-        // }
-        // randomQuestion = randomQuestion.slice(0, 8);
-        // randomQuestion.push(
-        //   dataImage.questions[
-        //     Math.floor(Math.random() * dataImage.questions.length)
-        //   ]
-        // );
-        // res.render("section-2.pug", {
-        //   title: "Vòng 2",
-        //   examCode: data.code,
+        user.lanThi.phan2 = true;
+        await user.save();
+        const dataImage = await DeThi.findOne({ code: "P020" });
+        const randomNumber = Math.floor(
+          Math.random() * dataImage.questions.length
+        );
+        const arrayRandomNumber = randomRange(
+          dataImage.questions[randomNumber].trueList.length
+        );
+        let randomQuestion = [];
+        for (var i = 0; i < arrayRandomNumber.length; i++) {
+          randomQuestion.push(
+            dataImage.questions[randomNumber].trueList[arrayRandomNumber[i]]
+          );
+        }
+        // res.json({
+        //   examCode: dataImage.code,
+        //   image: dataImage.questions[randomNumber].image,
         //   exams: randomQuestion,
         //   infoUser: user,
         // });
-        res.redirect("/exams/ready-3");
+        res.render("section-2.pug", {
+          title: "Vòng 2",
+          examCode: dataImage.code,
+          location: dataImage.questions[randomNumber].location,
+          image: dataImage.questions[randomNumber].image,
+          exams: randomQuestion,
+          infoUser: user,
+        });
       } else {
         req.flash("message", "Bạn đã thi vòng 2.");
         res.redirect("/exams/ready-3");
@@ -131,8 +137,8 @@ exports.templateSection3 = async (req, res) => {
     const user = await User.findOne({ _id: res.locals.user._id });
     if (user.lanThi.luotThi > 0) {
       if (!user.lanThi.phan3) {
-        //     user.lanThi.phan3 = true;
-        //     await user.save();
+        user.lanThi.phan3 = true;
+        await user.save();
         const data = await DeThi.findOne({ code: "P03" });
         const dataImage = await DeThi.findOne({ code: "P030" });
         const datdo = { name: "Đất Đỏ", code: "datdo" };
@@ -282,8 +288,8 @@ exports.templateSection4 = async (req, res) => {
     const user = await User.findOne({ _id: res.locals.user._id });
     if (user.lanThi.luotThi > 0) {
       if (!user.lanThi.phan4) {
-        // user.lanThi.phan4 = true;
-        // await user.save();
+        user.lanThi.phan4 = true;
+        await user.save();
         const data = await DeThi.findOne({ code: "P04" });
         const cotA = [];
         const cotB = [];
@@ -361,38 +367,38 @@ exports.nopBaiThi1 = async (req, res) => {
 exports.nopBaiThi2 = async (req, res) => {
   try {
     const data = req.body;
-    const baiThi = new BaiThi(data);
     const deThi = await DeThi.findOne({ code: data.exam });
-
-    const baiThiOfUser = await BaiThi.findOne({
-      user: data.user,
-      exam: data.exam,
-    });
-    if (baiThiOfUser !== null) {
-      if (baiThiOfUser.scope > baiThi.scope) {
-        baiThiOfUser.bestest = true;
-        baiThi.bestest = false;
-      } else {
-        // baiThiOfUser.scope <= baiThi.scope
-        if (baiThiOfUser.scope === baiThi.scope) {
-          if (baiThiOfUser.time > baiThi.time) {
-            baiThiOfUser.bestest = false;
-            baiThi.bestest = true;
-          } else {
-            // baiThiOfUser.time <= baiThi.scope
-            baiThiOfUser.bestest = true;
-            baiThi.bestest = false;
+    let scope = 0;
+    let matched = [];
+    if (data.location === data.locationAnswer) {
+      for (const item of deThi.questions) {
+        if (item.location === data.location) {
+          for (const subItem of item.trueList) {
+            for (const subItem1 of data.answer) {
+              if (subItem._id.toString() === subItem1._id.toString()) {
+                if (parseInt(subItem.true) === parseInt(subItem1.answer)) {
+                  matched.push(true);
+                } else {
+                  matched.push(false);
+                }
+              }
+            }
           }
-        } else {
-          // baiThiOfUser.scope < baiThi.scope
-          baiThiOfUser.bestest = false;
-          baiThi.bestest = true;
         }
       }
-      await baiThiOfUser.save();
-    } else {
-      baiThi.bestest = true;
+      if (!matched.includes(false)) {
+        scope = 100;
+      }
     }
+    const baiThi = new BaiThi({
+      user: data.user,
+      time: data.time,
+      lanThi: data.lanThi,
+      exam: data.exam,
+      scope: scope,
+      rawAnwser: data,
+      bestest: true,
+    });
     await baiThi.save();
     res.render("summary.pug", {
       title: "Vòng 2",
@@ -466,7 +472,7 @@ exports.nopBaiThi4 = async (req, res) => {
     });
     await baiThi.save();
     const user = await User.findOne({ _id: data.user });
-    // user.lanThi.luotThi -= 1;
+    user.lanThi.luotThi -= 1;
     user.dataDiem.round4.time = 0;
     user.dataDiem.round4.scope = scope;
     await user.save();

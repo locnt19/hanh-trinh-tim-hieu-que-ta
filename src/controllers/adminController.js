@@ -203,7 +203,7 @@ exports.templateUsers = async (req, res) => {
 exports.templateBaiThi = async (req, res) => {
   try {
     const listBaiThi = await BaiThi.find();
-    const listUser = await User.find({ "lanThi.luotThi": { $lt: 2 } });
+    const listUser = await User.find();
     let newArr = [];
     for (const iUser of listUser) {
       for (const iBaiThi of listBaiThi) {

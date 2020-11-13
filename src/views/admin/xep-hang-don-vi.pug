@@ -13,26 +13,37 @@ block content
             tr
               th
               th.align-middle(scope='col') Họ và tên
-              th.align-middle(scope='col') Điểm
-              th.align-middle(scope='col') Thời gian
+              //- th.align-middle(scope='col') Điểm
+              //- th.align-middle(scope='col') Thời gian
               th.align-middle(scope='col') Ngày sinh
               th.align-middle(scope='col') Tên lớp
               th.align-middle(scope='col') Huyện/Thành Phố
               th.align-middle(scope='col') Trường
-              th.align-middle(scope='col') Bậc
               th.align-middle(scope='col') Email
               th.align-middle(scope='col') ID
+              th.align-middle(scope='col') Chi tiết lượt thi
+              th.align-middle(scope='col') Điểm chi tiết
+
           tbody
             -for(var user of listUser)
               tr
                 td
                 td #{user.name}
-                td #{user.summaryScore}
-                td #{user.summaryTime}
+                //- td #{user.summaryScore}
+                //- td #{user.summaryTime}
                 td #{user.birthday}
                 td #{user.classRoom}
                 td #{user.district}
                 td #{user.nameSchool}
-                td #{user.school}
                 td #{user.email}
                 td #{user._id}
+                td
+                  .mb-2 Phần 1: #{user.lanThi.phan1 ? 'Đã thi' : 'Chưa thi'}
+                  .mb-2 Phần 2: #{user.lanThi.phan2 ? 'Đã thi' : 'Chưa thi'}
+                  .mb-2 Phần 3: #{user.lanThi.phan3 ? 'Đã thi' : 'Chưa thi'}
+                  .mb-2 Phần 4: #{user.lanThi.phan4 ? 'Đã thi' : 'Chưa thi'}
+                td
+                  .mb-2 Phần 1: #{user.dataDiem.round1.scope} điểm || #{user.dataDiem.round1.time} giây
+                  .mb-2 Phần 2: #{user.dataDiem.round2.scope} điểm || #{user.dataDiem.round2.time} giây
+                  .mb-2 Phần 3: #{user.dataDiem.round3.scope} điểm || #{user.dataDiem.round3.time} giây
+                  .mb-2 Phần 4: #{user.dataDiem.round4.scope} điểm || #{user.dataDiem.round4.time} giây

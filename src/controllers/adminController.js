@@ -231,21 +231,37 @@ exports.templateXepHangDonVi = async (req, res) => {
     let subTitle = "";
     let data = [];
     switch (req.params.donvi) {
-      case "THCS":
-        subTitle = "Trung học cơ sở";
-        data = await findAndMapUserWithBaiThi(subTitle);
+      case "vungtau":
+        subTitle = "TP. Vũng Tàu";
+        data = await User.find({ district: subTitle });
         break;
-      case "THPT":
-        subTitle = "Trung học phổ thông";
-        data = await findAndMapUserWithBaiThi(subTitle);
+      case "baria":
+        subTitle = "TP. Bà Rịa";
+        data = await User.find({ district: subTitle });
         break;
-      case "CD":
-        subTitle = "Cao đẳng";
-        data = await findAndMapUserWithBaiThi(subTitle);
+      case "chauduc":
+        subTitle = "H. Châu Đức";
+        data = await User.find({ district: subTitle });
         break;
-      case "DH":
-        subTitle = "Đại học";
-        data = await findAndMapUserWithBaiThi(subTitle);
+      case "xuyenmoc":
+        subTitle = "H. Xuyên Mộc";
+        data = await User.find({ district: subTitle });
+        break;
+      case "longdien":
+        subTitle = "H. Long Điền";
+        data = await User.find({ district: subTitle });
+        break;
+      case "datdo":
+        subTitle = "H. Đất Đỏ";
+        data = await User.find({ district: subTitle });
+        break;
+      case "phumy":
+        subTitle = "TX. Phú Mỹ";
+        data = await User.find({ district: subTitle });
+        break;
+      case "condao":
+        subTitle = "H. Côn Đảo";
+        data = await User.find({ district: subTitle });
         break;
       default:
         break;
@@ -257,6 +273,7 @@ exports.templateXepHangDonVi = async (req, res) => {
       listUser: data,
     });
   } catch (error) {
+    console.log(error);
     req.flash("message", error);
     res.render("500.pug", { title: "ERROR Xếp hạng đơn vị" });
   }

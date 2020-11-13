@@ -20,11 +20,9 @@ block content
               th.align-middle(scope='col') Email
               th.align-middle(scope='col') Năm sinh
               th.align-middle(scope='col') Huyện/Thành Phố
-              th.align-middle(scope='col') Cấp bậc
               th.align-middle(scope='col') Trường
               th.align-middle(scope='col') Lớp
               th.align-middle(scope='col') Tên lớp
-              th.align-middle(scope='col') Tỉnh
               th.align-middle(scope='col') ID
               th.align-middle(scope='col') Chi tiết lượt thi
           tbody
@@ -38,11 +36,9 @@ block content
                   td #{user.email}
                   td #{user.birthday}
                   td #{user.district}
-                  td #{user.school}
                   td #{user.nameSchool}
                   td #{user.grade}
                   td #{user.classRoom}
-                  td #{user.province}
                   td #{user._id}
                   td
                     .mb-2 Phần 1: #{user.lanThi.phan1 ? 'Đã thi' : 'Chưa thi'}
